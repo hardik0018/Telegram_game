@@ -3,6 +3,8 @@ import { FaRupeeSign } from "react-icons/fa";
 import { GiMiner } from "react-icons/gi";
 import { IoMdSettings } from "react-icons/io";
 import { IoFlash, IoPeopleSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
+
 const BottomNav = () => {
   const [navItems, setNavItems] = useState([
     { title: "Home", icon: IoFlash, active: false },
@@ -18,13 +20,12 @@ const BottomNav = () => {
         return { ...item, active: item.title === title ? true : false };
       })
     );
-    // navigate(`/${title}`);
   };
   return (
-    <div className="w-full my-0 mx-auto rounded-t-2xl bg-gray-900 flex items-center justify-between p-2">
+    <div className="my-0 mx-auto rounded-t-2xl bg-gray-900 flex items-center justify-between p-2">
       {navItems.map((item) => (
-        <div
-          key={item.title}
+        <Link
+          to={`${item.title == "Home" ? "/" : item.title}`}
           className={`flex flex-col gap-2 cursor-pointer rounded-xl items-center w-full py-[6px] ${
             item.active ? "bg-gray-800" : "bg-transparent"
           }`}
@@ -38,7 +39,7 @@ const BottomNav = () => {
           >
             {item.title}
           </span>
-        </div>
+        </Link>
       ))}
     </div>
   );
