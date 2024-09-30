@@ -2,8 +2,15 @@ import { LuDog } from "react-icons/lu";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import BottomNav from "./components/BottomBar";
 import CoinButton from "./components/CoinButton";
+import { useEffect } from "react";
+
+const tele = window.Telegram.WebApp;
 
 function App() {
+  useEffect(() => {
+    tele.ready()
+  }, [])
+  
   return (
     <>
       <div className="h-screen w-full md:w-[400px] mx-auto bg-black overflow-hidden text-white">
