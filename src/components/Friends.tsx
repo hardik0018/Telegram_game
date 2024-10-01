@@ -26,7 +26,7 @@ const Friends = () => {
           <p className="font-semibold">List of Your Friends (10)</p>
           <LuRefreshCw size={24} className="absolute right-2 cursor-pointer" />
         </div>
-
+        
         <div className="mt-2 mb-16">
           <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
             <LuDog size={33} className="ml-2" />

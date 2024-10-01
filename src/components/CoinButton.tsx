@@ -12,7 +12,7 @@ const CoinButton = () => {
   const [nextId, setNextId] = useState(0);
 
   const handleClick = (e: any) => {
-    console.log(e);
+    
     const { clientX: x, clientY: y } = e;
     const newText: FloatingText = { id: nextId, x, y };
     setFloatingTexts((prev) => [...prev, newText]);

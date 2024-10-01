@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaRupeeSign } from "react-icons/fa";
 import { GiMiner } from "react-icons/gi";
-import { IoMdSettings } from "react-icons/io";
+import { GoTasklist } from "react-icons/go";
 import { IoFlash, IoPeopleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const BottomNav = () => {
     { title: "Home", icon: IoFlash, active: true },
     { title: "Mine", icon: GiMiner, active: false },
     { title: "Friends", icon: IoPeopleSharp, active: false },
-    { title: "Settings", icon: IoMdSettings, active: false },
+    { title: "Task", icon: GoTasklist, active: false },
     { title: "Earn", icon: FaRupeeSign, active: false },
   ]);
 

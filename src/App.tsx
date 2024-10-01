@@ -5,6 +5,7 @@ import Mine from "./components/Mine";
 import Friends from "./components/Friends";
 import Earn from "./components/Earn";
 import Settings from "./components/Settings";
+import Task from "./components/Task";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -27,6 +28,10 @@ function App() {
         {
           path: "/Settings",
           element: <Settings />,
+        },
+        {
+          path: "/Task",
+          element: <Task />,
         },
         {
           path: "/Earn",
