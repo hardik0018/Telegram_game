@@ -1,7 +1,6 @@
 import { FaYoutube } from "react-icons/fa";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FcPlanner } from "react-icons/fc";
-import { HiCheck } from "react-icons/hi";
 import { LuInstagram } from "react-icons/lu";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import TrueCheck from "./TrueCheck";
