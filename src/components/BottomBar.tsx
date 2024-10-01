@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 const BottomNav = () => {
   const [navItems, setNavItems] = useState([
-    { title: "Home", icon: IoFlash, active: false },
+    { title: "Home", icon: IoFlash, active: true },
     { title: "Mine", icon: GiMiner, active: false },
-    { title: "Friends", icon: IoPeopleSharp, active: true },
+    { title: "Friends", icon: IoPeopleSharp, active: false },
     { title: "Settings", icon: IoMdSettings, active: false },
     { title: "Earn", icon: FaRupeeSign, active: false },
   ]);
