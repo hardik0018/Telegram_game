@@ -4,7 +4,7 @@ import { LuDog } from "react-icons/lu";
 
 const Home = () => {
   return (
-    <div className=" bg-black overflow-hidden">
+    <div className=" bg-black overflow-hidden h-screen">
       <div className="h-[10%] flex items-end px-5 md:px-10 py-2 z-20 md:py-4">
         <div className="flex items-center">
           <div className="w-11 h-10 bg-gray-600 rounded-lg flex items-center justify-center text-3xl">
@@ -55,7 +55,7 @@ const Home = () => {
             }}
           ></div>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 h-[50%] flex items-center">
           <CoinButton />
         </div>
         <div></div>

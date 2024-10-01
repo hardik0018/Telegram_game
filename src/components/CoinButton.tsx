@@ -20,7 +20,7 @@ const CoinButton = () => {
 
     setTimeout(() => {
       setFloatingTexts((prev) => prev.filter((text) => text.id !== newText.id));
-    }, 1000);
+    }, 900);
   };
 
   return (
