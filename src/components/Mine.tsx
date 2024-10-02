@@ -97,10 +97,358 @@ const Mine = () => {
               </div>
             </div>
           </div>
+          <div
+            onClick={() => handleSingleCard("First")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("Second")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("First")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("Second")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("First")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("Second")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("First")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("Second")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("First")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("Second")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("First")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
+          <div
+            onClick={() => handleSingleCard("Second")}
+            className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
+          >
+            <div className="flex items-center px-1 py-1 gap-3">
+              <FcGallery className="w-1/3" size={60} />
+              <div className="flex flex-col w-2/3">
+                <h2 className="font-bold">Fun Tokens</h2>
+                <p className="text-[12px] mt-1">Profit Per hour</p>
+                <div className="flex items-center -mt-2">
+                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
+                    <FaIndianRupeeSign size={8} />
+                  </div>
+                  <p className="text-[14px] ml-1 font-semibold">2.31M</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
+            <div className="flex px-2 py-1 items-center gap-3">
+              <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
+
+              <div className="flex items-center w-2/3">
+                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
+                  <FaIndianRupeeSign size={8} />
+                </div>
+                <p className="ml-1 text-[15px] font-semibold">2.31M</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {currentCard && (
-        <div className="absolute w-full z-20 h-screen -top-4">
+        <div className="fixed w-full z-20 h-screen -top-4">
           <SingleCard title={`${currentCard}`} close={hanldeCardClose} />
         </div>
       )}

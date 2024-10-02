@@ -220,7 +220,7 @@ const Earn = () => {
         </div>
       </div>
       {currentCard && (
-        <div className="absolute w-full z-20 h-screen -top-4">
+        <div className="fixed w-full z-20 h-screen -top-4">
           <SingleCard title={`${currentCard}`} close={hanldeCardClose} />
         </div>
       )}
