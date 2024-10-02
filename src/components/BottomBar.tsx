@@ -27,7 +27,7 @@ const BottomNav = () => {
         <Link
           to={`${item.title == "Home" ? "/" : item.title}`}
           className={`flex flex-col gap-2 cursor-pointer rounded-xl items-center w-full py-[6px] ${
-            item.active ? "bg-gray-800" : "bg-transparent"
+            item.active ? "bg-gray-800 text-orange-500" : "bg-transparent"
           }`}
           onClick={() => handleActive(item.title)}
         >

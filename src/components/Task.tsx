@@ -9,8 +9,8 @@ const Task = () => {
   return (
     <div>
       <div className="flex flex-col items-center h-[30%] mt-10 text-center px-3">
-        <div className="rounded-full bg-yellow-500 w-fit h-fit p-7 border-[15px] border-yellow-300">
-          <FaIndianRupeeSign size={50} />
+        <div className="rounded-full bg-yellow-500 w-fit h-fit p-6 border-[15px] border-yellow-300 shadow-[0px_0px_40px_0px_#faf089]">
+          <FaIndianRupeeSign size={80} />
         </div>
         <p className="text-4xl mt-5 font-bold">Earn More Coins</p>
 
@@ -24,7 +24,7 @@ const Task = () => {
               <FaYoutube size={33} className="ml-2 text-red-500" />
               <div className="w-full">
                 <p className="font-semibold text-sm">Watch Youtube new Video</p>
-                <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
+                <div className="flex w-full gap-1 items-cen ter text-[13px] text-gray-400">
                   <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
                     <FaIndianRupeeSign size={10} />
                   </div>
