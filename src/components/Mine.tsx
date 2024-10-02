@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, useState } from "react";
+import {  useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FcGallery } from "react-icons/fc";
