@@ -13,17 +13,17 @@ export default {
           },
           "30%": {
             opacity: 0.8,
-            transform: "translateY(-70px)",
+            transform: "translateY(-100px)",
             fontSize: "60px",
           },
           "60%": {
             opacity: 0.5,
-            transform: "translateY(-110px)",
+            transform: "translateY(-150px)",
             fontSize: "50px",
           },
           "100%": {
             opacity: 0,
-            transform: "translateY(-100px) easy-out",
+            transform: "translateY(-180px) easy-out",
           },
         },
       },

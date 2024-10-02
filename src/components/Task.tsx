@@ -4,6 +4,7 @@ import { FcPlanner } from "react-icons/fc";
 import { LuInstagram } from "react-icons/lu";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import TrueCheck from "./TrueCheck";
+import RuppesCoin from "./RuppesCoin";
 
 const Task = () => {
   return (
@@ -24,10 +25,8 @@ const Task = () => {
               <FaYoutube size={33} className="ml-2 text-red-500" />
               <div className="w-full">
                 <p className="font-semibold text-sm">Watch Youtube new Video</p>
-                <div className="flex w-full gap-1 items-cen ter text-[13px] text-gray-400">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-                    <FaIndianRupeeSign size={10} />
-                  </div>
+                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
+                  <RuppesCoin bordersize={2} iconsize={8} />
                   <span className=" font-semibold text-white">+100</span>
                 </div>
               </div>
@@ -39,10 +38,8 @@ const Task = () => {
               <FaYoutube size={33} className="ml-2 text-red-500" />
               <div className="w-full">
                 <p className="font-semibold text-sm">Watch Youtube new Video</p>
-                <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-                    <FaIndianRupeeSign size={10} />
-                  </div>
+                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
+                  <RuppesCoin bordersize={2} iconsize={8} />
                   <span className=" font-semibold text-white">+100</span>
                 </div>
               </div>
@@ -62,10 +59,8 @@ const Task = () => {
               <FcPlanner size={33} className="ml-2" />
               <div className="w-full">
                 <p className="font-semibold text-sm">Daily Rewards</p>
-                <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-                    <FaIndianRupeeSign size={10} />
-                  </div>
+                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
+                  <RuppesCoin bordersize={2} iconsize={8} />
                   <span className=" font-semibold text-white">+100</span>
                 </div>
               </div>
@@ -85,10 +80,8 @@ const Task = () => {
               <FaYoutube size={33} className="ml-2 text-red-500" />
               <div className="w-full">
                 <p className="font-semibold text-sm">Follow On Instagram</p>
-                <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-                    <FaIndianRupeeSign size={10} />
-                  </div>
+                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
+                  <RuppesCoin bordersize={2} iconsize={8} />
                   <span className=" font-semibold text-white">+500</span>
                 </div>
               </div>
@@ -100,10 +93,8 @@ const Task = () => {
               <LuInstagram size={33} className="ml-2 text-pink-500" />
               <div className="w-full">
                 <p className="font-semibold text-sm">Follow On Instagram</p>
-                <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-                    <FaIndianRupeeSign size={10} />
-                  </div>
+                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
+                  <RuppesCoin bordersize={2} iconsize={8} />
                   <span className=" font-semibold text-white">+500</span>
                 </div>
               </div>

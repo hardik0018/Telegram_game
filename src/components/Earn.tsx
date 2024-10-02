@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
-import { FaIndianRupeeSign } from "react-icons/fa6";
+import RuppesCoin from "./RuppesCoin";
 
 type SingleCard = {
   title: String;
@@ -36,10 +36,8 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
-            <p className="ml-1 my-1 text-[20px] font-semibold">10000</p>
+            <RuppesCoin bordersize={2} iconsize={15} />
+            <p className="ml-1 my-1 text-[20px] font-semibold">20000</p>
           </div>
         </div>
         <div
@@ -58,9 +56,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">100000</p>
           </div>
         </div>
@@ -80,9 +76,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">1000000</p>
           </div>
         </div>
@@ -102,9 +96,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">10000</p>
           </div>
         </div>
@@ -124,9 +116,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">100000</p>
           </div>
         </div>
@@ -146,9 +136,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">1000000</p>
           </div>
         </div>
@@ -168,9 +156,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">10000</p>
           </div>
         </div>
@@ -190,9 +176,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">100000</p>
           </div>
         </div>
@@ -212,9 +196,7 @@ const Earn = () => {
           </div>
           <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
           <div className="flex items-center justify-center w-full">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-              <FaIndianRupeeSign size={15} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={15} />
             <p className="ml-1 my-1 text-[20px] font-semibold">1000000</p>
           </div>
         </div>
@@ -244,9 +226,7 @@ const SingleCard = ({ title, close }: SingleCard) => {
           <h2 className="mt-2 text-[30px] font-semibold">₹{title}</h2>
 
           <div className="flex w-full gap-1 items-center justify-center text-[25px] text-gray-400 my-5">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-              <FaIndianRupeeSign size={20} />
-            </div>
+          <RuppesCoin bordersize={2} iconsize={8} />
             <span className="font-semibold text-white">100000</span>
           </div>
           <button className="w-[90%] text-xl font-semibold py-5 text-center bg-blue-600 rounded-2xl">

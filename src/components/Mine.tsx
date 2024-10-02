@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
-import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FcGallery } from "react-icons/fc";
+import RuppesCoin from "./RuppesCoin";
+import Coinstatus from "./Coinstatus";
 
 type SingleCard = {
   title: String;
@@ -20,7 +21,8 @@ const Mine = () => {
   };
   return (
     <section className="relative ">
-      <div className="mx-1">
+      <div className="mx-1.5 flex flex-col items-center mt-10">
+        <Coinstatus />
         <div className="flex items-center bg-gray-700 rounded-lg w-full justify-between px-2 py-1 mt-4">
           {Menus.map((item, index) => {
             return (
@@ -49,9 +51,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -61,9 +61,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -78,9 +76,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -90,9 +86,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -107,9 +101,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -119,9 +111,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -136,9 +126,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -148,9 +136,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -165,9 +151,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -177,9 +161,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -194,9 +176,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -206,9 +186,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -223,9 +201,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -235,9 +211,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -252,9 +226,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -264,9 +236,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -281,9 +251,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -293,9 +261,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -310,9 +276,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -322,9 +286,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -339,9 +301,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -351,9 +311,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -368,9 +326,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -380,9 +336,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -397,9 +351,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -409,9 +361,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -426,9 +376,7 @@ const Mine = () => {
                 <h2 className="font-bold">Fun Tokens</h2>
                 <p className="text-[12px] mt-1">Profit Per hour</p>
                 <div className="flex items-center -mt-2">
-                  <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[3px] border-yellow-300">
-                    <FaIndianRupeeSign size={8} />
-                  </div>
+                  <RuppesCoin bordersize={2} iconsize={10} />
                   <p className="text-[14px] ml-1 font-semibold">2.31M</p>
                 </div>
               </div>
@@ -438,9 +386,7 @@ const Mine = () => {
               <p className="w-1/3 text-[15px] font-semibold">lvl 14</p>
 
               <div className="flex items-center w-2/3">
-                <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300">
-                  <FaIndianRupeeSign size={8} />
-                </div>
+                <RuppesCoin bordersize={2} iconsize={10} />
                 <p className="ml-1 text-[15px] font-semibold">2.31M</p>
               </div>
             </div>
@@ -475,15 +421,11 @@ const SingleCard = ({ title, close }: SingleCard) => {
             Profit Per hour
           </p>
           <div className="flex w-full gap-1 items-center justify-center text-[12px] text-gray-400">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-              <FaIndianRupeeSign size={8} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={8} />
             <span className=" font-semibold text-gray-400">+100</span>
           </div>
           <div className="flex w-full gap-1 items-center justify-center text-[25px] text-gray-400 my-5">
-            <div className="rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[2px] border-yellow-300 text-white">
-              <FaIndianRupeeSign size={20} />
-            </div>
+            <RuppesCoin bordersize={2} iconsize={8} />
             <span className="font-semibold text-white">+100</span>
           </div>
           <button className="w-[90%] text-xl font-semibold py-5 text-center bg-blue-600 rounded-2xl">
