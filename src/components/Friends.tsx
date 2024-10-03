@@ -3,6 +3,8 @@ import { LuDog, LuRefreshCw } from "react-icons/lu";
 import RuppesCoin from "./RuppesCoin";
 
 const Friends = () => {
+  const names: string[] = ["Alice", "Bob", "Charlie", "David", "harsh"];
+
   return (
     <div>
       <div className="text-center w-full text-white px-2 py-10">
@@ -24,104 +26,11 @@ const Friends = () => {
           <p className="font-semibold">List of Your Friends (10)</p>
           <LuRefreshCw size={24} className="absolute right-2 cursor-pointer" />
         </div>
-
+        {/* List of Your Friends */}
         <div className="mt-2 mb-16">
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-            <LuDog size={33} className="ml-2" />
-            <div className="">
-              <p className="font-semibold text-sm">Name</p>
-              <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-                <p>Level:</p>
-                <RuppesCoin bordersize={2} iconsize={8} />
-                <span className=" font-semibold text-white">100</span>
-                <p>(100)</p>
-              </div>
-            </div>
-          </div>
+          {names.map((name: string) => (
+            <FriendList name={name} />
+          ))}
         </div>
       </div>
     </div>
@@ -129,3 +38,20 @@ const Friends = () => {
 };
 
 export default Friends;
+
+export const FriendList = ({ name }: { name: string }) => {
+  return (
+    <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
+      <LuDog size={33} className="ml-2" />
+      <div>
+        <p className="font-semibold text-sm">{name}</p>
+        <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
+          <p>Level:</p>
+          <RuppesCoin bordersize={2} iconsize={8} />
+          <span className=" font-semibold text-white">100</span>
+          <p>(100)</p>
+        </div>
+      </div>
+    </div>
+  );
+};
