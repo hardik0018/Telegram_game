@@ -9,20 +9,28 @@ interface FloatingText {
 }
 
 const CoinButton = () => {
-  const { setCoin } = useContext();
+  const { setCoin, setEnergy, Energy, EarnTap } = useContext();
   const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
   const [nextId, setNextId] = useState(0);
 
   const handleClick = (e: any) => {
-    const { clientX: x, clientY: y } = e;
-    const newText: FloatingText = { id: nextId, x, y };
-    setFloatingTexts((prev) => [...prev, newText]);
-    setNextId((prev) => prev + 1);
-    setCoin((prev) => prev + 1);
+    if (+Energy > 0) {
+      const { clientX: x, clientY: y } = e;
+      const newText: FloatingText = { id: nextId, x, y };
+      setFloatingTexts((prev) => [...prev, newText]);
+      setNextId((prev) => prev + 1);
+      hanldeCoinStatus();
+      setTimeout(() => {
+        setFloatingTexts((prev) =>
+          prev.filter((text) => text.id !== newText.id)
+        );
+      }, 900);
+    }
+  };
 
-    setTimeout(() => {
-      setFloatingTexts((prev) => prev.filter((text) => text.id !== newText.id));
-    }, 900);
+  const hanldeCoinStatus = () => {
+    setCoin((prev) => +prev + +EarnTap);
+    setEnergy((prev) => +prev - +EarnTap);
   };
 
   return (
@@ -41,7 +49,7 @@ const CoinButton = () => {
           key={text.id}
           style={{ top: text.y, left: text.x }}
         >
-          +1
+          +{+EarnTap}
         </span>
       ))}
     </div>

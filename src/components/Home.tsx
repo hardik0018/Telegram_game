@@ -1,11 +1,12 @@
 import CoinButton from "./CoinButton";
 import { LuDog } from "react-icons/lu";
 import RuppesCoin from "./RuppesCoin";
-import { useContext } from "../context/useContext";
 import Coinstatus from "./Coinstatus";
+import { useContext } from "../context/useContext";
+import { BsLightningChargeFill } from "react-icons/bs";
 
 const Home = () => {
-  const { coin } = useContext();
+  const { name, Energy, PPH, EarnTap } = useContext();
   return (
     <div className=" bg-black overflow-hidden h-screen">
       <div className="h-[10%] flex items-end px-5 md:px-10 py-2 z-20 md:py-4">
@@ -13,12 +14,7 @@ const Home = () => {
           <div className="w-11 h-10 bg-gray-600 rounded-lg flex items-center justify-center text-3xl">
             <LuDog />
           </div>
-          <p className="ml-4 font-semibold">Name</p>
-        </div>
-        <div className="flex justify-end w-full">
-          <button className="bg-gray-600 rounded-lg px-4 font-semibold py-2 h-10">
-            Binance
-          </button>
+          <p className="ml-4 font-semibold">{name}</p>
         </div>
       </div>
       <div className="h-[90%] bg-black rounded-t-[40px] md:rounded-t-[70px] px-3 md:px-6 z-20 flex flex-col items-center border-t-4 border-yellow-400 shadow-[0px_-2px_40px_0px_#f6e05e] md:shadow-[0px_-26px_79px_0px_#f6e05e]">
@@ -27,7 +23,7 @@ const Home = () => {
             <p className="text-orange-500 text-[12px]">Earn Per tap</p>
             <div className="flex items-center justify-center gap-1 w-full">
               <RuppesCoin bordersize={2} iconsize={8} />
-              <p>+12</p>
+              <p>+{+EarnTap}</p>
             </div>
           </div>
           <div className="flex flex-col text-center px-2 md:px-3 py-1.5 font-semibold rounded-md bg-gray-800 text-sm w-[32%]">
@@ -36,7 +32,7 @@ const Home = () => {
           </div>
           <div className="flex flex-col text-center px-2 md:px-3 py-1.5 font-semibold rounded-md bg-gray-800 text-sm w-[32%]">
             <p className="text-green-500 text-[12px]">Profit Per hour</p>
-            <p>+12</p>
+            <p>+{+PPH}</p>
           </div>
         </div>
         <Coinstatus />
@@ -53,6 +49,10 @@ const Home = () => {
         </div>
         <div className="mt-10 h-[50%] flex items-center">
           <CoinButton />
+        </div>
+        <div className="h-[10%] flex justify-start w-full font-bold items-center  ">
+          <BsLightningChargeFill size={23} className="text-yellow-500 mr-1" />
+          <p>{+Energy}/1000</p>
         </div>
         <div></div>
       </div>

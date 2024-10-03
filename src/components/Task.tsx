@@ -65,7 +65,10 @@ const Task = () => {
                 </div>
               </div>
               <div className="flex justify-end mr-1">
-                <MdOutlineNavigateNext size={34} className="text-white p-0.5" />
+                <MdOutlineNavigateNext
+                  size={34}
+                  className="text-white p-0.5 cursor-pointer"
+                />
               </div>
             </div>
           </div>
@@ -86,7 +89,10 @@ const Task = () => {
                 </div>
               </div>
               <div className="flex justify-end mr-1">
-                <MdOutlineNavigateNext size={34} className="text-white p-0.5" />
+                <MdOutlineNavigateNext
+                  size={34}
+                  className="text-white p-0.5 cursor-pointer"
+                />
               </div>
             </div>
             <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
@@ -99,7 +105,10 @@ const Task = () => {
                 </div>
               </div>
               <div className="flex justify-end mr-1">
-                <MdOutlineNavigateNext size={34} className="text-white p-0.5" />
+                <MdOutlineNavigateNext
+                  size={34}
+                  className="text-white p-0.5 cursor-pointer"
+                />
               </div>
             </div>
           </div>
