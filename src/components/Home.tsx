@@ -4,9 +4,17 @@ import RuppesCoin from "./RuppesCoin";
 import Coinstatus from "./Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { name, Energy, PPH, EarnTap } = useContext();
+  const { name, Energy, PPH, EarnTap, MaxEnergy, coin, level, nextLvlup } =
+    useContext();
+  const [ProcessBar, setProcessBar] = useState(0);
+
+  useEffect(() => {
+    setProcessBar((+coin * 100) / +nextLvlup - 1);
+  }, [coin]);
+
   return (
     <div className=" bg-black overflow-hidden h-screen">
       <div className="h-[10%] flex items-end px-5 md:px-10 py-2 z-20 md:py-4">
@@ -28,7 +36,7 @@ const Home = () => {
           </div>
           <div className="flex flex-col text-center px-2 md:px-3 py-1.5 font-semibold rounded-md bg-gray-800 text-sm w-[32%]">
             <p className="text-blue-500 text-[12px]">Coins to Level up</p>
-            <p>+12</p>
+            <p>+{+nextLvlup}</p>
           </div>
           <div className="flex flex-col text-center px-2 md:px-3 py-1.5 font-semibold rounded-md bg-gray-800 text-sm w-[32%]">
             <p className="text-green-500 text-[12px]">Profit Per hour</p>
@@ -43,7 +51,7 @@ const Home = () => {
             style={{
               background:
                 "linear-gradient(90deg, rgba(247,240,0,1) 0%, rgba(228,255,0,1) 10%, rgba(33,250,3,1) 20%, rgba(28,232,51,1) 30%, rgba(7,233,219,1) 40%, rgba(28,184,238,1) 50%, rgba(38,0,255,1) 60%, rgba(222,0,255,1) 70%, rgba(248,0,255,1) 80%, rgba(255,0,91,1) 90%)",
-              width: `${40}%`,
+              width: `${ProcessBar}%`,
             }}
           ></div>
         </div>
@@ -52,7 +60,9 @@ const Home = () => {
         </div>
         <div className="h-[10%] flex justify-start w-full font-bold items-center  ">
           <BsLightningChargeFill size={23} className="text-yellow-500 mr-1" />
-          <p>{+Energy}/1000</p>
+          <p>
+            {+Energy}/{+MaxEnergy}
+          </p>
         </div>
         <div></div>
       </div>

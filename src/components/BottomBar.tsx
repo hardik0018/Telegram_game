@@ -23,8 +23,9 @@ const BottomNav = () => {
   };
   return (
     <div className="my-0 mx-auto rounded-t-2xl bg-gray-900 flex items-center justify-between p-2">
-      {navItems.map((item) => (
+      {navItems.map((item, i) => (
         <Link
+          key={i}
           to={`${item.title == "Home" ? "/" : item.title}`}
           className={`flex flex-col gap-2 cursor-pointer rounded-xl items-center w-full py-[6px] ${
             item.active ? "bg-gray-800 text-orange-500" : "bg-transparent"

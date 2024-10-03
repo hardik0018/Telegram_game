@@ -404,12 +404,12 @@ const Mine = () => {
 
 const SingleCard = ({ title, close }: SingleCard) => {
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full mt-4">
       <div
         className="h-full bg-gray-300 opacity-20 cursor-pointer"
         onClick={close}
       ></div>
-      <div className="absolute text-center px-2 py-6 w-full h-[63%] bottom-0 -mt-16 rounded-t-[45px] bg-black border-t-4 border-yellow-400 shadow-[0px_-2px_40px_0px_#f6e05e]">
+      <div className="absolute text-center px-2 py-6 w-full h-[65%] bottom-0 -mt-16 rounded-t-[45px] bg-black border-t-4 border-yellow-400 shadow-[0px_-2px_40px_0px_#f6e05e]">
         <div className="w-full mx-auto flex flex-col items-center relative">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF3fhW-NbMxpXAKDd0V9hrRVoux3c9uEzScQ&s"

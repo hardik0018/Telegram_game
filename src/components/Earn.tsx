@@ -212,12 +212,12 @@ const Earn = () => {
 
 const SingleCard = ({ title, close }: SingleCard) => {
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full mt-5">
       <div
         className="h-full bg-gray-300 opacity-20 cursor-pointer"
         onClick={close}
       ></div>
-      <div className="absolute text-center px-2 py-6 w-full h-[57%] bottom-0 -mt-16 rounded-t-[45px] bg-black border-t-4 border-yellow-400 shadow-[0px_-2px_40px_0px_#f6e05e]">
+      <div className="absolute text-center px-2 py-6 w-full h-[58%] bottom-0 -mt-16 rounded-t-[45px] bg-black border-t-4 border-yellow-400 shadow-[0px_-2px_40px_0px_#f6e05e]">
         <div className="w-full mx-auto flex flex-col items-center relative">
           <img
             src="https://az15297.vo.msecnd.net/images/rewards/rc/large/AmazonPayIN_310x216.png"
@@ -226,7 +226,7 @@ const SingleCard = ({ title, close }: SingleCard) => {
           <h2 className="mt-2 text-[30px] font-semibold">₹{title}</h2>
 
           <div className="flex w-full gap-1 items-center justify-center text-[25px] text-gray-400 my-5">
-          <RuppesCoin bordersize={2} iconsize={8} />
+            <RuppesCoin bordersize={2} iconsize={8} />
             <span className="font-semibold text-white">100000</span>
           </div>
           <button className="w-[90%] text-xl font-semibold py-5 text-center bg-blue-600 rounded-2xl">
