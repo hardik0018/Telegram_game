@@ -28,14 +28,16 @@ const BottomNav = () => {
           key={i}
           to={`${item.title == "Home" ? "/" : item.title}`}
           className={`flex flex-col gap-2 cursor-pointer rounded-xl items-center w-full py-[6px] ${
-            item.active ? "bg-gray-800 text-orange-500" : "bg-transparent"
+            item.active
+              ? "bg-gray-800 text-orange-400 border-b-2 border-orange-400"
+              : "bg-transparent"
           }`}
           onClick={() => handleActive(item.title)}
         >
           <item.icon className="text-xl md:text-2xl" />
           <span
             className={`text-sm font-medium ${
-              item.active ? "text-[#fdb224]" : "text-[#818288]"
+              item.active ? "text-[#fdb224] " : "text-[#818288]"
             }`}
           >
             {item.title}
