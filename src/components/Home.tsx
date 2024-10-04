@@ -7,7 +7,7 @@ import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { name, Energy, PPH, EarnTap, MaxEnergy, coin, level, nextLvlup } =
+  const { name, Energy, PPH, EarnTap, MaxEnergy, coin, nextLvlup } =
     useContext();
   const [ProcessBar, setProcessBar] = useState(0);
 
