@@ -14,8 +14,10 @@ const Friends = () => {
   const names: string[] = ["Alice", "Bob", "Charlie", "David", "harsh"];
 
   const handleShareClick = () => {
+    const sharelink = "example";
+    const telegramUrl = `https://t.me/share/url?url=${sharelink}&text=${sharelink}`;
+    window.open(telegramUrl, "_self");
     setIsSharing(!isSharing);
-    alert(isSharing);
   };
 
   const handleCopyClick = () => {
