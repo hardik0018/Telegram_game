@@ -14,21 +14,28 @@ const Friends = () => {
   const names: string[] = ["Alice", "Bob", "Charlie", "David", "harsh"];
 
   const handleShareClick = () => {
-    const sharelink = "example";
-    const telegramUrl = `https://t.me/share/url?url=${sharelink}&text=${sharelink}`;
-    window.open(telegramUrl, "_self");
+    const url = encodeURIComponent("https://t.me/BigEarnMoneyNewBot");
+
+    const text = encodeURIComponent(
+      "Join me on @BigEarnMoneyNewBot to start earning money together!"
+    );
+    const telegramLink = `https://t.me/share/url?url=${url}&text=${text}`;
+
+    window.open(telegramLink, "_self");
     setIsSharing(!isSharing);
   };
 
   const handleCopyClick = () => {
-    const linkToCopy: string = "Refferal Link Copy";
-    const el: HTMLInputElement = document.createElement("input");
-    el.value = linkToCopy;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand("copy");
-    document.body.removeChild(el);
-    setcopy((prev) => !prev);
+    if (!copy) {
+      const linkToCopy: string = "https://t.me/BigEarnMoneyNewBot?startapp=''";
+      const el: HTMLInputElement = document.createElement("input");
+      el.value = linkToCopy;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+      setcopy(true);
+    }
   };
 
   return (

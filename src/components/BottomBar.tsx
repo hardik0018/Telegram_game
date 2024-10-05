@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRupeeSign } from "react-icons/fa";
 import { GiMiner } from "react-icons/gi";
 import { GoTasklist } from "react-icons/go";
 import { IoFlash, IoPeopleSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const BottomNav = () => {
+  const location = useLocation();
+
   const [navItems, setNavItems] = useState([
     { title: "Home", icon: IoFlash, active: true },
     { title: "Mine", icon: GiMiner, active: false },
@@ -21,6 +23,14 @@ const BottomNav = () => {
       })
     );
   };
+
+  useEffect(() => {
+    // Set active state based on current location
+    const currentPath =
+      location.pathname === "/" ? "Home" : location.pathname.slice(1);
+    handleActive(currentPath);
+  }, [location]);
+
   return (
     <div className="my-0 mx-auto rounded-t-2xl bg-gray-900 flex items-center justify-between p-2">
       {navItems.map((item, i) => (
