@@ -1,13 +1,37 @@
-import { IoGiftSharp } from "react-icons/io5";
+import {
+  IoCheckmarkCircleOutline,
+  IoCopyOutline,
+  IoGiftSharp,
+} from "react-icons/io5";
 import { LuDog, LuRefreshCw } from "react-icons/lu";
 import RuppesCoin from "./RuppesCoin";
+import { FaRegShareFromSquare } from "react-icons/fa6";
+import { useState } from "react";
 
 const Friends = () => {
+  const [isSharing, setIsSharing] = useState(false);
+  const [copy, setcopy] = useState(false);
   const names: string[] = ["Alice", "Bob", "Charlie", "David", "harsh"];
+
+  const handleShareClick = () => {
+    setIsSharing(!isSharing);
+    alert(isSharing);
+  };
+
+  const handleCopyClick = () => {
+    const linkToCopy: string = "Refferal Link Copy";
+    const el: HTMLInputElement = document.createElement("input");
+    el.value = linkToCopy;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setcopy((prev) => !prev);
+  };
 
   return (
     <div>
-      <div className="text-center w-full text-white px-2 py-10">
+      <div className="text-center w-full text-white px-2 py-10 relative">
         <h2 className="text-3xl font-bold">Invite Friends</h2>
         <p className="text-sm my-2">You and your friend will receive bonuses</p>
 
@@ -22,7 +46,27 @@ const Friends = () => {
             </div>
           </div>
         </div>
-        <div className="text-left flex items-center mt-10 w-full relative">
+        {/* reffer link */}
+        <div className="w-full h-[55px] my-5 flex gap-1 ">
+          <div
+            className="h-full w-[82%] gap-2 flex items-center cursor-pointer justify-center bg-[#5D65F3] rounded-xl"
+            onClick={handleShareClick}
+          >
+            <p className="font-semibold text-lg ">Invite Your Friends</p>
+            <FaRegShareFromSquare size={22} />
+          </div>
+          <button
+            className="h-full w-[18%] flex items-center justify-center cursor-pointer bg-[#494fca] rounded-xl"
+            onClick={handleCopyClick}
+          >
+            {copy ? (
+              <IoCheckmarkCircleOutline size={30} />
+            ) : (
+              <IoCopyOutline size={24} />
+            )}
+          </button>
+        </div>
+        <div className="text-left flex items-center w-full relative">
           <p className="font-semibold">List of Your Friends (10)</p>
           <LuRefreshCw size={24} className="absolute right-2 cursor-pointer" />
         </div>
