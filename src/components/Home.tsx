@@ -7,13 +7,43 @@ import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { name, Energy, PPH, EarnTap, MaxEnergy, coin, nextLvlup } =
+  const { setName, name, Energy, PPH, EarnTap, MaxEnergy, coin, nextLvlup } =
     useContext();
   const [ProcessBar, setProcessBar] = useState(0);
 
   useEffect(() => {
     setProcessBar((+coin * 100) / +nextLvlup - 1);
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const telegramData = urlParams.get("tele");
+
+    if (telegramData) {
+      try {
+        fetchUserName(telegramData);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }, [coin]);
+
+  // Function to fetch user name from the backend
+  const fetchUserName = async (telegramUserId: any) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/User/getUser/${telegramUserId}`
+      );
+      const data = await response.json();
+
+      if (data.success) {
+        setName(data.name);
+      } else {
+        setName("User not found.");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className=" bg-black overflow-hidden h-screen">
