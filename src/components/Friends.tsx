@@ -81,8 +81,8 @@ const Friends = () => {
         </div>
         {/* List of Your Friends */}
         <div className="mt-2 mb-16">
-          {names.map((name: string) => (
-            <FriendList name={name} />
+          {names.map((name: string, i) => (
+            <FriendList name={name} key={i} />
           ))}
         </div>
       </div>

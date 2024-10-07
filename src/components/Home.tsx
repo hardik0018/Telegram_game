@@ -7,13 +7,29 @@ import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { setName, name, Energy, PPH, EarnTap, MaxEnergy, coin, nextLvlup } =
-    useContext();
+  const {
+    setName,
+    name,
+    Energy,
+    PPH,
+    EarnTap,
+    MaxEnergy,
+    coin,
+    nextLvlup,
+    setCoin,
+    setPPH,
+    setLevel,
+    setEarnTap,
+    setId,
+    setFriends,
+  } = useContext();
   const [ProcessBar, setProcessBar] = useState(0);
 
   useEffect(() => {
     setProcessBar((+coin * 100) / +nextLvlup - 1);
+  }, [coin]);
 
+  useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
 
     const telegramData = urlParams.get("tele");
@@ -25,7 +41,7 @@ const Home = () => {
         console.log(err);
       }
     }
-  }, [coin]);
+  }, []);
 
   // Function to fetch user name from the backend
   const fetchUserName = async (telegramUserId: any) => {
@@ -34,9 +50,16 @@ const Home = () => {
         `http://localhost:4000/User/getUser/${telegramUserId}`
       );
       const data = await response.json();
-
+      console.log(data);
       if (data.success) {
-        setName(data.name);
+        const { coin, PPH, friends, level, name, tap, teleID } = data.data;
+        setName(name);
+        setId(teleID);
+        setCoin(coin);
+        setPPH(PPH);
+        setLevel(level);
+        setFriends(friends);
+        setEarnTap(tap);
       } else {
         setName("User not found.");
       }
