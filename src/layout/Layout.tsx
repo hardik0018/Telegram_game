@@ -6,8 +6,8 @@ const Layout = () => {
   return (
     <div className="w-full md:w-[450px] mx-auto text-white min-h-screen bg-black overflow-hidden">
       <ToastContainer
-        position="bottom-center"
-        autoClose={1000}
+        position="top-right"
+        autoClose={1500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -16,6 +16,7 @@ const Layout = () => {
         draggable
         pauseOnHover
         theme="dark"
+        style={{ top: "10px" }}
       />
       <div className="h-[90%]">
         <Outlet />
