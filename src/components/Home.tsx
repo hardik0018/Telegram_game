@@ -31,7 +31,7 @@ const Home = () => {
   const fetchUserName = async (telegramUserId: any) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/User/getUser/${telegramUserId}`
+        `http://localhost:4000/User/getUser/${telegramUserId}` //changes server with hosted server
       );
       const data = await response.json();
 
