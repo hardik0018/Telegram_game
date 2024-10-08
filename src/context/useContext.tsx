@@ -1,6 +1,8 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface ContextProps {
+  id: Number;
+  setId: Dispatch<SetStateAction<Number | number>>;
   coin: Number;
   setCoin: Dispatch<SetStateAction<Number | number>>;
   name: String;
@@ -22,6 +24,8 @@ interface ContextProps {
 }
 
 const IntialValues: ContextProps = {
+  id: 0,
+  setId: () => undefined,
   coin: 0,
   setCoin: () => undefined,
   name: "Hello",
@@ -62,6 +66,7 @@ interface WithChildProps {
 const context = React.createContext(IntialValues);
 
 export const ContextProvider = ({ children }: WithChildProps) => {
+  const [id, setId] = useState(IntialValues.coin);
   const [coin, setCoin] = useState(IntialValues.coin);
   const [name, setName] = useState(IntialValues.name);
   const [Energy, setEnergy] = useState(IntialValues.Energy);
@@ -72,6 +77,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [EarnTap, setEarnTap] = useState(IntialValues.EarnTap);
   const [MaxEnergy, setMaxEnergy] = useState(IntialValues.MaxEnergy);
   const values = {
+    id,
+    setId,
     coin,
     setCoin,
     Energy,
