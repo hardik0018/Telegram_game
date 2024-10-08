@@ -21,6 +21,8 @@ interface ContextProps {
   setMaxEnergy: Dispatch<SetStateAction<Number | number>>;
   EarnTap: Number;
   setEarnTap: Dispatch<SetStateAction<Number | number>>;
+  Cards: Array<any>;
+  setCards: any;
 }
 
 const IntialValues: ContextProps = {
@@ -42,8 +44,10 @@ const IntialValues: ContextProps = {
   setEnergy: () => undefined,
   MaxEnergy: 1000,
   setMaxEnergy: () => undefined,
-  EarnTap: 1,
+  EarnTap: 10,
   setEarnTap: () => undefined,
+  Cards: [],
+  setCards: () => undefined,
 };
 
 const LevelSchema: Object = [
@@ -76,6 +80,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [PPH, setPPH] = useState(IntialValues.PPH);
   const [EarnTap, setEarnTap] = useState(IntialValues.EarnTap);
   const [MaxEnergy, setMaxEnergy] = useState(IntialValues.MaxEnergy);
+  const [Cards, setCards] = useState(IntialValues.Cards);
   const values = {
     id,
     setId,
@@ -97,6 +102,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     setName,
     EarnTap,
     setEarnTap,
+    Cards,
+    setCards,
   };
 
   useEffect(() => {
