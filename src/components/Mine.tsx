@@ -25,10 +25,12 @@ const Mine = () => {
     setCurrentCard(false);
   };
   useEffect(() => {
-    let filterdata = Cards.filter((item) => {
-      if (item.category == currentMenu) return item;
-    });
-    setFilterCard(filterdata);
+    if (Cards) {
+      let filterdata = Cards.filter((item) => {
+        if (item.category == currentMenu) return item;
+      });
+      setFilterCard(filterdata);
+    }
   }, [currentMenu, Cards]);
 
   const hanldeUpdate = (e: any) => {
