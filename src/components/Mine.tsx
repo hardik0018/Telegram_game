@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import RuppesCoin from "./RuppesCoin";
 import Coinstatus from "./Coinstatus";
-import Data from "../data/mine";
 import { useContext } from "../context/useContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,10 +12,11 @@ type SingleCard = {
   handleUpdate: React.MouseEventHandler;
 };
 const Mine = () => {
-  const { Cards, setCards, setCoin, setPPH, coin } = useContext();
+  const { Cards, setCoin, setPPH, coin, setCards } = useContext();
   const Menus = ["Markets", "PR Team", "Tech", "Specials"];
   const [currentMenu, setCurrentMenu] = useState("Markets");
   const [currentCard, setCurrentCard] = useState(false);
+  const [FilterCard, setFilterCard] = useState<any[]>([]);
 
   const handleSingleCard = (e: any) => {
     setCurrentCard(e);
@@ -25,27 +25,22 @@ const Mine = () => {
     setCurrentCard(false);
   };
   useEffect(() => {
-    console.log(currentMenu);
-    if (Cards) {
-      let filterdata = Data.filter((item) => {
-        if (item.category == currentMenu) return item;
-      });
-      setCards(filterdata);
-    }
-  }, [currentMenu]);
+    let filterdata = Cards.filter((item) => {
+      if (item.category == currentMenu) return item;
+    });
+    setFilterCard(filterdata);
+  }, [currentMenu, Cards]);
 
   const hanldeUpdate = (e: any) => {
     let cardData: any = [...Cards];
     cardData.map((item: any) => {
       const { id, currentlvl, level } = item;
 
-      if (item.id === e) {
-        console.log(id, currentlvl);
-        console.log(coin, level[currentlvl - 1].coin);
+      if (id === e) {
         if (coin >= level[currentlvl - 1].coin) {
           setCoin((prev) => +prev - level[currentlvl - 1].coin);
           setPPH((prev) => +prev + level[currentlvl - 1].PPH);
-          console.log(level[currentlvl - 1].coin);
+
           item.currentlvl++;
           toast.success("Success");
         } else {
@@ -53,7 +48,7 @@ const Mine = () => {
         }
       }
     });
-    console.log(cardData);
+
     setCards(cardData);
     setCurrentCard(false);
   };
@@ -79,7 +74,7 @@ const Mine = () => {
           })}
         </div>
         <div className="w-full text-lg mt-7 my-2 gap-2 mb-24 grid grid-cols-2">
-          {Cards.map((item) => {
+          {FilterCard.map((item) => {
             return (
               <div
                 onClick={() => handleSingleCard(item)}

@@ -22,6 +22,7 @@ const Home = () => {
     setEarnTap,
     setId,
     setFriends,
+    setCards,
   } = useContext();
   const [ProcessBar, setProcessBar] = useState(0);
 
@@ -50,11 +51,13 @@ const Home = () => {
         `http://localhost:4000/User/getUser/${telegramUserId}`
       );
       const data = await response.json();
-      console.log(data);
+
       if (data.success) {
-        const { coin, PPH, friends, level, name, tap, teleID } = data.data;
+        const { coin, PPH, friends, level, name, tap, teleID, Cards } =
+          data.data;
         setName(name);
         setId(teleID);
+        setCards(Cards);
         setCoin(coin);
         setPPH(PPH);
         setLevel(level);

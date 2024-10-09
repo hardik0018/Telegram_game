@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import Data from "../data/mine";
 
 interface ContextProps {
   id: Number;
@@ -13,8 +15,8 @@ interface ContextProps {
   setNextLvlup: Dispatch<SetStateAction<Number | number>>;
   PPH: Number;
   setPPH: Dispatch<SetStateAction<Number | number>>;
-  Friends: Object;
-  setFriends: Dispatch<SetStateAction<Number | number>>;
+  Friends: Array<any>;
+  setFriends?: any;
   Energy: Number;
   setEnergy: Dispatch<SetStateAction<Number | number>>;
   MaxEnergy: Number;
@@ -23,6 +25,7 @@ interface ContextProps {
   setEarnTap: Dispatch<SetStateAction<Number | number>>;
   Cards: Array<any>;
   setCards: any;
+  hanldeSave?: any;
 }
 
 const IntialValues: ContextProps = {
@@ -38,13 +41,13 @@ const IntialValues: ContextProps = {
   setNextLvlup: () => undefined,
   PPH: 0,
   setPPH: () => undefined,
-  Friends: {},
+  Friends: [],
   setFriends: () => undefined,
   Energy: 1000,
   setEnergy: () => undefined,
   MaxEnergy: 1000,
   setMaxEnergy: () => undefined,
-  EarnTap: 10,
+  EarnTap: 1,
   setEarnTap: () => undefined,
   Cards: [],
   setCards: () => undefined,
@@ -81,6 +84,67 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [EarnTap, setEarnTap] = useState(IntialValues.EarnTap);
   const [MaxEnergy, setMaxEnergy] = useState(IntialValues.MaxEnergy);
   const [Cards, setCards] = useState(IntialValues.Cards);
+
+  useEffect(() => {
+    if (+Energy < +MaxEnergy) {
+      const interval = setInterval(function () {
+        setEnergy((prev) => +prev + +EarnTap);
+      }, 2000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [Energy]);
+  useEffect(() => {
+    setCards(Data);
+  }, []);
+
+  useEffect(() => {
+    Object(LevelSchema).map((i: any) => {
+      if (i.min <= coin && i.max >= coin) {
+        if (i.lvl != level) {
+          setLevel(i.lvl);
+          setNextLvlup(i.max + 1);
+          setEnergy(i.maxEnergy);
+          setMaxEnergy(i.maxEnergy);
+          setEarnTap(i.Tap);
+        }
+      }
+    });
+
+    const interval = setInterval(function () {
+      setCoin((prev) => +prev + +PPH / 3600);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [coin]);
+
+  useEffect(() => {
+    hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap);
+  }, [coin, PPH, Friends, Cards, level, EarnTap]);
+
+  const hanldeSave = async (
+    id: Number,
+    coin: Number,
+    PPH: Number,
+    level: Number,
+    Cards: any,
+    Friends: any,
+    tap: Number
+  ) => {
+    await axios.post(`http://localhost:4000/User/UpdateData`, {
+      id,
+      coin,
+      PPH,
+      level,
+      Cards,
+      Friends,
+      tap,
+    });
+  };
   const values = {
     id,
     setId,
@@ -104,33 +168,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     setEarnTap,
     Cards,
     setCards,
+    hanldeSave,
   };
-
-  useEffect(() => {
-    if (+Energy < +MaxEnergy) {
-      const interval = setInterval(function () {
-        setEnergy((prev) => +prev + +EarnTap);
-      }, 2000);
-
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [Energy]);
-
-  useEffect(() => {
-    Object(LevelSchema).map((i: any) => {
-      if (i.min <= coin && i.max >= coin) {
-        if (i.lvl != level) {
-          setLevel(i.lvl);
-          setNextLvlup(i.max + 1);
-          setEnergy(i.maxEnergy);
-          setMaxEnergy(i.maxEnergy);
-          setEarnTap(i.Tap);
-        }
-      }
-    });
-  }, [coin]);
 
   return <context.Provider value={values}>{children}</context.Provider>;
 };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Coin from "../assets/images/coin.jpg";
 import { useContext } from "../context/useContext";
-import axios from "axios";
 
 interface FloatingText {
   id: number;
@@ -10,7 +9,7 @@ interface FloatingText {
 }
 
 const CoinButton = () => {
-  const { setCoin, setEnergy, Energy, EarnTap, id, coin } = useContext();
+  const { setCoin, setEnergy, Energy, EarnTap } = useContext();
   const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
   const [nextId, setNextId] = useState(0);
 
@@ -28,18 +27,9 @@ const CoinButton = () => {
       }, 900);
     }
   };
-
-  const hanldeUpdateCoin = async (id: Number) => {
-    await axios.post(`http://localhost:4000/User/UpdateCoin`, {
-      id,
-      coin,
-    });
-  };
-
   const hanldeCoinStatus = () => {
     setCoin((prev) => +prev + +EarnTap);
     setEnergy((prev) => +prev - +EarnTap);
-    hanldeUpdateCoin(id);
   };
 
   return (
