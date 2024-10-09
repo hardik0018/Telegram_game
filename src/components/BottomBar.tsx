@@ -32,7 +32,7 @@ const BottomNav = () => {
   }, [location]);
 
   return (
-    <div className="my-0 mx-auto rounded-t-2xl bg-gray-900 flex items-center justify-between p-2">
+    <div className="absolute w-full bottom-0 rounded-t-2xl bg-gray-900 flex items-center justify-between p-2">
       {navItems.map((item, i) => (
         <Link
           key={i}

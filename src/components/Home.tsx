@@ -34,7 +34,6 @@ const Home = () => {
     const urlParams = new URLSearchParams(window.location.search);
 
     const telegramData = urlParams.get("tele");
-
     if (telegramData) {
       try {
         fetchUserName(telegramData);
@@ -48,7 +47,7 @@ const Home = () => {
   const fetchUserName = async (telegramUserId: any) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/User/getUser/${telegramUserId}`
+        `http://localhost:4000/User/getUser/${telegramUserId}` //changes server with hosted server
       );
       const data = await response.json();
 
