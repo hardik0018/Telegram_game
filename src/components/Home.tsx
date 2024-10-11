@@ -51,6 +51,7 @@ const Home = () => {
       );
       const data = await response.json();
 
+      console.log(data);
       if (data.success) {
         const { coin, PPH, friends, level, name, tap, teleID, Cards } =
           data.data;

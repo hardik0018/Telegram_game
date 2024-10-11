@@ -13,13 +13,34 @@ const Friends = () => {
   const [copy, setcopy] = useState(false);
   const names: string[] = ["Alice", "Bob", "Charlie", "David", "harsh"];
 
-  const handleShareClick = () => {
-    const url = encodeURIComponent("https://t.me/BigEarnMoneyNewBot");
+  const handleShareClick = async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const telegramData = urlParams.get("tele");
+    let refer = "";
+    if (telegramData) {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/User/getUser/${telegramData}` //changes server with hosted server
+        );
+        const data = await response.json();
+
+        refer = data.data.referCode;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    const url = encodeURIComponent(
+      `https://t.me/BigEarnMoneyNewBot?start=${refer}`
+    );
 
     const text = encodeURIComponent(
       "Join me on @BigEarnMoneyNewBot to start earning money together!"
     );
     const telegramLink = `https://t.me/share/url?url=${url}&text=${text}`;
+
+    console.log(telegramLink);
 
     window.open(telegramLink, "_self");
     setIsSharing(!isSharing);
