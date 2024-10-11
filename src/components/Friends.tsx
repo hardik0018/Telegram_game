@@ -14,9 +14,7 @@ const Friends = () => {
   const names: string[] = ["Alice", "Bob", "Charlie", "David", "harsh"];
 
   const handleShareClick = async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-
-    const telegramData = urlParams.get("tele");
+    const telegramData = localStorage.getItem("telegramData");
     let refer = "";
     if (telegramData) {
       try {
@@ -82,7 +80,7 @@ const Friends = () => {
             className="h-full w-[82%] gap-2 flex items-center cursor-pointer justify-center bg-[#5D65F3] rounded-xl"
             onClick={handleShareClick}
           >
-            <p className="font-semibold text-lg ">Invite Your Friends</p>
+            <p className="font-semibold text-lg ">Invite Your Friends Now</p>
             <FaRegShareFromSquare size={22} />
           </div>
           <button

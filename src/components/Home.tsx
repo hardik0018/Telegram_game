@@ -34,7 +34,14 @@ const Home = () => {
     const urlParams = new URLSearchParams(window.location.search);
 
     const telegramData = urlParams.get("tele");
+
     if (telegramData) {
+      localStorage.setItem("telegramData", telegramData);
+    }
+
+    const savedTelegramData = localStorage.getItem("telegramData");
+
+    if (telegramData || savedTelegramData) {
       try {
         fetchUserName(telegramData);
       } catch (err) {
