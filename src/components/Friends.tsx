@@ -6,31 +6,34 @@ import {
 import { LuDog, LuRefreshCw } from "react-icons/lu";
 import RuppesCoin from "./RuppesCoin";
 import { FaRegShareFromSquare } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useContext } from "../context/useContext";
+
+type Friend = {
+  name: string;
+  teleID: string;
+};
 
 const Friends = () => {
   const [isSharing, setIsSharing] = useState(false);
   const [copy, setcopy] = useState(false);
-  const names: string[] = ["Alice", "Bob", "Charlie", "David", "harsh"];
+  const { Friends } = useContext();
+  const [names, setnames] = useState<Friend[]>([]);
+  const [referID, setReferID] = useState("");
+  const [count, setcount] = useState<Number>(0);
+
+  useEffect(() => {
+    const telegramData = localStorage.getItem("telegramData");
+    if (telegramData) {
+      setReferID(telegramData);
+      setnames(Friends);
+      setcount(Friends.length);
+    }
+  }, [Friends]);
 
   const handleShareClick = async () => {
-    const telegramData = localStorage.getItem("telegramData");
-    let refer = "";
-    if (telegramData) {
-      try {
-        const response = await fetch(
-          `http://localhost:4000/User/getUser/${telegramData}` //changes server with hosted server
-        );
-        const data = await response.json();
-
-        refer = data.data.referCode;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
     const url = encodeURIComponent(
-      `https://t.me/BigEarnMoneyNewBot?start=${refer}`
+      `https://t.me/BigEarnMoneyNewBot?start=${referID}`
     );
 
     const text = encodeURIComponent(
@@ -38,15 +41,13 @@ const Friends = () => {
     );
     const telegramLink = `https://t.me/share/url?url=${url}&text=${text}`;
 
-    console.log(telegramLink);
-
     window.open(telegramLink, "_self");
     setIsSharing(!isSharing);
   };
 
   const handleCopyClick = () => {
     if (!copy) {
-      const linkToCopy: string = "https://t.me/BigEarnMoneyNewBot?startapp=''";
+      const linkToCopy: string = `https://t.me/BigEarnMoneyNewBot?start=${referID}`;
       const el: HTMLInputElement = document.createElement("input");
       el.value = linkToCopy;
       document.body.appendChild(el);
@@ -80,7 +81,7 @@ const Friends = () => {
             className="h-full w-[82%] gap-2 flex items-center cursor-pointer justify-center bg-[#5D65F3] rounded-xl"
             onClick={handleShareClick}
           >
-            <p className="font-semibold text-lg ">Invite Your Friends Now</p>
+            <p className="font-semibold text-lg">Invite Your Friends Now</p>
             <FaRegShareFromSquare size={22} />
           </div>
           <button
@@ -95,13 +96,13 @@ const Friends = () => {
           </button>
         </div>
         <div className="text-left flex items-center w-full relative">
-          <p className="font-semibold">List of Your Friends (10)</p>
+          <p className="font-semibold">List of Your Friends ({`${count}`})</p>
           <LuRefreshCw size={24} className="absolute right-2 cursor-pointer" />
         </div>
         {/* List of Your Friends */}
         <div className="mt-2 mb-16">
-          {names.map((name: string, i) => (
-            <FriendList name={name} key={i} />
+          {names.map((friend, idx) => (
+            <FriendList name={friend.name} key={idx} />
           ))}
         </div>
       </div>
