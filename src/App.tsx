@@ -64,6 +64,11 @@ function App() {
           element: <AdminYoutubeSee />,
         },
         {
+          path: "Youtube/Add",
+          element: <AdminYoutubeAdd />,
+        },
+
+        {
           path: "Redeem",
           element: <AdminRedeemSee />,
         },
@@ -71,6 +76,11 @@ function App() {
           path: "Cards",
           element: <AdminMineCardSee />,
         },
+        {
+          path: "Cards/Add",
+          element: <AdminMineCardAdd />,
+        },
+
         {
           path: "Users",
           element: <AdminUserSee />,

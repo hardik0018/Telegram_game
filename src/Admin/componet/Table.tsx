@@ -14,18 +14,23 @@ const Table = ({
   unique,
   update,
   action,
-}) => {
+  Deletelable,
+}: any) => {
   const [confidelete, setConfidelete] = useState(false);
+  const [id, setId] = useState("");
+  const [lable, setLable] = useState("");
 
-  const hanldeDeleteCloseOpen = (id) => {
+  const hanldeDeleteCloseOpen = (val: Boolean, id: any,label?:any) => {
+    setId(id);
     setConfidelete(!confidelete);
-    if (id) {
+    setLable(label)
+    if (val) {
       hanldeDelete(id);
     }
   };
 
-  const hanldeYes = (id) => {
-    hanldeDeleteCloseOpen(id);
+  const hanldeYes = (id: any) => {
+    hanldeDeleteCloseOpen(true, id);
   };
   return (
     <div className="overflow-x-auto">
@@ -34,7 +39,7 @@ const Table = ({
           <tr>
             {img && <th></th>}
             {headvalue &&
-              headvalue.map((item, index) => {
+              headvalue.map((item: any, index: number) => {
                 return (
                   <th key={index} scope="col" className="px-4 py-3">
                     {item}
@@ -50,7 +55,7 @@ const Table = ({
         </thead>
         <tbody>
           {data &&
-            data.map((item, index) => {
+            data.map((item: any, index: number) => {
               return (
                 <tr className="border-b" key={index}>
                   {!!img && (
@@ -59,13 +64,13 @@ const Table = ({
                         loading="lazy"
                         alt="img"
                         className="rounded-xl w-10 h-10 md:w-20 md:h-20 p-1 md:p-2"
-                        src={`${
-                          import.meta.env.VITE_PUBLIC_SERVER_HOST
-                        }/images/${item.img}`}
+                        src={`${import.meta.env.VITE_SERVER_HOST}/images/${
+                          item.img
+                        }`}
                       />
                     </th>
                   )}
-                  {headvalue.map((i) => {
+                  {headvalue.map((i: number) => {
                     return (
                       <th key={i} scope="col" className="px-4 py-3">
                         {item[`${i}`]}
@@ -86,18 +91,10 @@ const Table = ({
                       )}
                       <RiDeleteBin3Line
                         onClick={() => {
-                          hanldeDeleteCloseOpen(false);
+                          hanldeDeleteCloseOpen(false, item[unique],item[Deletelable]);
                         }}
                         className="text-red-600 text-2xl md:text-3xl cursor-pointer"
                       />
-                      {confidelete && (
-                        <DeleteConfirmation
-                          close={hanldeDeleteCloseOpen}
-                          Yes={hanldeYes}
-                          item={item[unique]}
-                          id={item[unique]}
-                        />
-                      )}
                     </th>
                   )}
                 </tr>
@@ -105,6 +102,14 @@ const Table = ({
             })}
         </tbody>
       </table>
+      {confidelete && (
+        <DeleteConfirmation
+          close={hanldeDeleteCloseOpen}
+          Yes={hanldeYes}
+          id={id}
+          item={lable}
+        />
+      )}
     </div>
   );
 };

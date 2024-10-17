@@ -1,7 +1,8 @@
 import { IoMdClose } from "react-icons/io";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
-const DeleteConfirmation = ({ close, Yes, item, id }) => {
+const DeleteConfirmation = ({ close, Yes, item, id }:any) => {
+  console.log(id)
   return (
     <div className="fixed top-0 left-0 h-full w-full bg-gray-100 opacity-95">
       <div className="relative flex items-center justify-center h-full ">

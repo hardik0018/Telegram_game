@@ -15,40 +15,6 @@ const Task = () => {
         </div>
         <p className="text-4xl mt-5 font-bold">Earn More Coins</p>
 
-        {/* Youtube Video */}
-        <div className="w-full">
-          <div className="text-left flex items-center mt-10 w-full relative">
-            <p className="font-semibold">Bot Youtube</p>
-          </div>
-          <div className="mt-2 w-full">
-            <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-              <FaYoutube size={33} className="ml-2 text-red-500" />
-              <div className="w-full">
-                <p className="font-semibold text-sm">Watch Youtube new Video</p>
-                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
-                  <RuppesCoin bordersize={2} iconsize={8} />
-                  <span className=" font-semibold text-white">+100</span>
-                </div>
-              </div>
-              <div className="flex justify-end mr-3">
-                <TrueCheck />
-              </div>
-            </div>
-            <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-              <FaYoutube size={33} className="ml-2 text-red-500" />
-              <div className="w-full">
-                <p className="font-semibold text-sm">Watch Youtube new Video</p>
-                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
-                  <RuppesCoin bordersize={2} iconsize={8} />
-                  <span className=" font-semibold text-white">+100</span>
-                </div>
-              </div>
-              <div className="flex justify-end mr-3">
-                <TrueCheck />
-              </div>
-            </div>
-          </div>
-        </div>
         {/* Daily Task */}
         <div className="w-full">
           <div className="text-left flex items-center mt-4 w-full relative">
@@ -74,11 +40,11 @@ const Task = () => {
           </div>
         </div>
         {/* Task List */}
-        <div className="w-full mb-5">
+        <div className="w-full">
           <div className="text-left flex items-center mt-4 w-full relative">
             <p className="font-semibold">Task List</p>
           </div>
-          <div className="mt-2 mb-20 w-full">
+          <div className="mt-2 w-full">
             <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
               <FaYoutube size={33} className="ml-2 text-red-500" />
               <div className="w-full">
@@ -109,6 +75,40 @@ const Task = () => {
                   size={34}
                   className="text-white p-0.5 cursor-pointer"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Youtube Video */}
+        <div className="w-full mb-20">
+          <div className="text-left flex items-center mt-4 w-full relative">
+            <p className="font-semibold">Bot Youtube</p>
+          </div>
+          <div className="mt-2 w-full">
+            <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
+              <FaYoutube size={33} className="ml-2 text-red-500" />
+              <div className="w-full">
+                <p className="font-semibold text-sm">Watch Youtube new Video</p>
+                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
+                  <RuppesCoin bordersize={2} iconsize={8} />
+                  <span className=" font-semibold text-white">+100</span>
+                </div>
+              </div>
+              <div className="flex justify-end mr-3">
+                <TrueCheck />
+              </div>
+            </div>
+            <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
+              <FaYoutube size={33} className="ml-2 text-red-500" />
+              <div className="w-full">
+                <p className="font-semibold text-sm">Watch Youtube new Video</p>
+                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
+                  <RuppesCoin bordersize={2} iconsize={8} />
+                  <span className=" font-semibold text-white">+100</span>
+                </div>
+              </div>
+              <div className="flex justify-end mr-3">
+                <TrueCheck />
               </div>
             </div>
           </div>
