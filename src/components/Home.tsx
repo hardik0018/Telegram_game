@@ -39,11 +39,12 @@ const Home = () => {
       localStorage.setItem("telegramData", telegramData);
     }
 
-    const savedTelegramData = localStorage.getItem("telegramData");
+    const savedTelegramData =
+      localStorage.getItem("telegramData") || telegramData;
 
-    if (telegramData || savedTelegramData) {
+    if (savedTelegramData) {
       try {
-        fetchUserName(telegramData);
+        fetchUserName(savedTelegramData);
       } catch (err) {
         console.log(err);
       }
@@ -98,7 +99,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-col text-center px-2 md:px-3 py-1.5 font-semibold rounded-md bg-gray-800 text-sm w-[32%]">
-            <p className="text-blue-500 text-[12px]">Coins to Level up</p>
+            <p className="text-blue-500 text-[12px]">Coins To Levels up</p>
             <p>+{+nextLvlup}</p>
           </div>
           <div className="flex flex-col text-center px-2 md:px-3 py-1.5 font-semibold rounded-md bg-gray-800 text-sm w-[32%]">
