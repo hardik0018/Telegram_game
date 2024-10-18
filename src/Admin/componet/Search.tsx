@@ -1,7 +1,7 @@
 import { IoMdSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const Search = ({ search, setSearch, to }) => {
+const Search = ({ search, setSearch, to }:any) => {
   return (
     <div className="flex relative items-center my-2.5">
       <div className="w-[60%]">
@@ -21,7 +21,6 @@ const Search = ({ search, setSearch, to }) => {
               onChange={(e) => {
                 setSearch(e.target.value);
               }}
-              required=""
             />
           </div>
         </div>

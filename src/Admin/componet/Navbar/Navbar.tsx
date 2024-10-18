@@ -2,9 +2,7 @@ import { useEffect, useRef } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaRegUser, FaRupeeSign } from "react-icons/fa";
-import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { AiOutlineHome } from "react-icons/ai";
-import { MdListAlt } from "react-icons/md";
 import { FiYoutube } from "react-icons/fi";
 import { PiUsersThree } from "react-icons/pi";
 import { GiMiner } from "react-icons/gi";
@@ -64,15 +62,9 @@ const Navbar = () => {
                   </span>
                   <span className="capitalize ml-2 text-white">Items Adds</span>
                   <div className="absolute left-0 top-full w-full bg-white shadow-md py-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 z-50 divide-y divide-gray-300 divide-dashed">
-                    <Link
-                      to="/Admin/Mainposters"
-                      className="px-6 py-3 flex items-center hover:bg-gray-100 transition"
-                    >
-                      <TfiHeadphoneAlt className="text-blue-600 w-[18px] h-[18px]" />
-                      <span className="ml-6 text-gray-600 text-sm">
-                        MainPoster
-                      </span>
-                    </Link>
+                    <p className="px-6 py-3 flex items-center hover:bg-gray-100 transition">
+                      Comming Soon
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between flex-grow pl-12">

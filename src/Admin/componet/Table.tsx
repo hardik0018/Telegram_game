@@ -15,15 +15,16 @@ const Table = ({
   update,
   action,
   Deletelable,
+  deleteAction,
 }: any) => {
   const [confidelete, setConfidelete] = useState(false);
   const [id, setId] = useState("");
   const [lable, setLable] = useState("");
 
-  const hanldeDeleteCloseOpen = (val: Boolean, id: any,label?:any) => {
+  const hanldeDeleteCloseOpen = (val: Boolean, id: any, label?: any) => {
     setId(id);
     setConfidelete(!confidelete);
-    setLable(label)
+    setLable(label);
     if (val) {
       hanldeDelete(id);
     }
@@ -89,12 +90,18 @@ const Table = ({
                           <FaRegEdit className="text-blue-600 text-2xl md:text-3xl mr-2" />
                         </Link>
                       )}
-                      <RiDeleteBin3Line
-                        onClick={() => {
-                          hanldeDeleteCloseOpen(false, item[unique],item[Deletelable]);
-                        }}
-                        className="text-red-600 text-2xl md:text-3xl cursor-pointer"
-                      />
+                      {deleteAction && (
+                        <RiDeleteBin3Line
+                          onClick={() => {
+                            hanldeDeleteCloseOpen(
+                              false,
+                              item[unique],
+                              item[Deletelable]
+                            );
+                          }}
+                          className="text-red-600 text-2xl md:text-3xl cursor-pointer"
+                        />
+                      )}
                     </th>
                   )}
                 </tr>

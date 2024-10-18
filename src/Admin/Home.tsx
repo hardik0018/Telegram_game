@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { FaUsers } from "react-icons/fa";
 
 type MainBlockType = {
   title: String;
@@ -11,7 +12,36 @@ type MainBlockType = {
 const Home = () => {
   return (
     <div className="">
-      <div className="px-4 md:px-10 w-full mx-auto my-2">dfsdf</div>
+      <div className="px-4 md:px-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mx-auto my-2">
+        <MainBlock
+          title={"User"}
+          icon={<FaUsers />}
+          amount={10}
+          lable={"fs"}
+          lableValue={23}
+        />
+        <MainBlock
+          title={"Order"}
+          icon={<FaUsers />}
+          amount={10}
+          lable={"fs"}
+          lableValue={23}
+        />
+        <MainBlock
+          title={"Order"}
+          icon={<FaUsers />}
+          amount={10}
+          lable={"fs"}
+          lableValue={23}
+        />
+        <MainBlock
+          title={"Order"}
+          icon={<FaUsers />}
+          amount={10}
+          lable={"fs"}
+          lableValue={23}
+        />
+      </div>
     </div>
   );
 };

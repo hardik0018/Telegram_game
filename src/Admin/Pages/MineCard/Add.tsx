@@ -7,6 +7,8 @@ import ErrorMessage from "../../componet/ErrorMessage";
 import axios from "axios";
 import SelectBox from "../../componet/SelectBox";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import Loader from "../../../components/Loader";
 
 const schema = object({
   img: mixed().required("Image is Required"),
@@ -21,12 +23,13 @@ const schema = object({
 });
 
 const Add = () => {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     setValue,
     watch,
-    formState: { errors },
+    formState: { errors, isLoading },
     control,
   } = useForm({
     resolver: yupResolver(schema),
@@ -38,6 +41,7 @@ const Add = () => {
   });
   const Img: any = watch("img");
   const onSubmit = async (data: any) => {
+    setLoading(true);
     const formData = new FormData();
     formData.append("lvl", JSON.stringify(data.lvl));
     formData.append("img", data.img[0]);
@@ -48,22 +52,22 @@ const Add = () => {
       `${import.meta.env.VITE_SERVER_HOST}/mine/Add`,
       formData
     );
-
+    setLoading(false);
     if (res.data.success) {
       toast.success("Inserted");
     } else {
       toast.error(res.data.error);
     }
   };
+
+  if (isLoading || loading) return <Loader />;
   return (
     <div>
       <div className="my-2 mt-6 mx-auto shadow-md border border-gray-300 shadow-gray-400 items-center w-[80%] md:w-[50%]  bg-white text-gray-700 text-md md:text-xl rounded-md ">
         <div className="text-black mx-auto bg-gray-300 rounded-xl shadow-sm shadow-gray-300">
           <div className="p-4 pl-4 text-black bg-white rounded-t-xl">
-            <h2 className="font-semibold text-[22px]">Create New Category</h2>
-            <p className="text-[16px] text-gray-600">
-              Provide category details.
-            </p>
+            <h2 className="font-semibold text-[22px]">Add New MineCards</h2>
+            <p className="text-[16px] text-gray-600">Provide Cards details.</p>
             <div className="w-full h-0.5 mt- bg-gray-300"></div>
             <div className="mt-2">
               <div className="flex items-center justify-center w-full">

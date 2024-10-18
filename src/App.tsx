@@ -13,7 +13,6 @@ import AdminRedeemAdd from "./Admin/Pages/Redeem/Add";
 import AdminRedeemSee from "./Admin/Pages/Redeem/See";
 import AdminUserSee from "./Admin/Pages/Users/See";
 import AdminUserUpdate from "./Admin/Pages/Users/Update";
-import AdminUserBan from "./Admin/Pages/Users/Ban";
 import AdminMineCardAdd from "./Admin/Pages/MineCard/Add";
 import AdminMineCardSee from "./Admin/Pages/MineCard/See";
 import AdminYoutubeAdd from "./Admin/Pages/Youtube/Add";
@@ -73,6 +72,10 @@ function App() {
           element: <AdminRedeemSee />,
         },
         {
+          path: "Redeem/Add",
+          element: <AdminRedeemAdd />,
+        },
+        {
           path: "Cards",
           element: <AdminMineCardSee />,
         },
@@ -84,6 +87,10 @@ function App() {
         {
           path: "Users",
           element: <AdminUserSee />,
+        },
+        {
+          path: "User/update/:slug",
+          element: <AdminUserUpdate />,
         },
       ],
     },
