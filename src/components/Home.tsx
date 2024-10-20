@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
   const {
-    setName,
+    fetchUserName,
     name,
     Energy,
     PPH,
@@ -16,13 +16,6 @@ const Home = () => {
     MaxEnergy,
     coin,
     nextLvlup,
-    setCoin,
-    setPPH,
-    setLevel,
-    setEarnTap,
-    setId,
-    setFriends,
-    setCards,
   } = useContext();
   const [ProcessBar, setProcessBar] = useState(0);
 
@@ -31,53 +24,27 @@ const Home = () => {
   }, [coin]);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
+    // const urlParams = new URLSearchParams(window.location.search);
+    fetchUserName(1183112225);
+    // const telegramData = urlParams.get("tele");
 
-    const telegramData = urlParams.get("tele");
+    // if (telegramData) {
+    //   localStorage.setItem("telegramData", telegramData);
+    // }
 
-    if (telegramData) {
-      localStorage.setItem("telegramData", telegramData);
-    }
+    // const savedTelegramData =
+    //   localStorage.getItem("telegramData") || telegramData;
 
-    const savedTelegramData =
-      localStorage.getItem("telegramData") || telegramData;
-
-    if (savedTelegramData) {
-      try {
-        fetchUserName(savedTelegramData);
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    // if (savedTelegramData) {
+    //   try {
+    //     fetchUserName(savedTelegramData);
+    //   } catch (err) {
+    //    
+    //   }
+    // }
   }, []);
 
   // Function to fetch user name from the backend
-  const fetchUserName = async (telegramUserId: any) => {
-    try {
-      const response = await fetch(
-        `http://localhost:4000/User/getUser/${telegramUserId}` //changes server with hosted server
-      );
-      const data = await response.json();
-
-      console.log(data);
-      if (data.success) {
-        const { coin, PPH, friends, level, name, tap, teleID, Cards } =
-          data.data;
-        setName(name);
-        setId(teleID);
-        setCards(Cards);
-        setCoin(coin);
-        setPPH(PPH);
-        setLevel(level);
-        setFriends(friends);
-        setEarnTap(tap);
-      } else {
-        setName("User not found.");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <div className=" bg-black overflow-hidden h-screen">

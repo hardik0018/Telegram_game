@@ -1,6 +1,6 @@
 import ErrorMessage from "./ErrorMessage";
 
-const SelectBox = ({ label, id, option, register, errors }) => {
+const SelectBox = ({ label, id, option, register, errors }: any) => {
   return (
     <form>
       <div className="w-full">
@@ -15,7 +15,7 @@ const SelectBox = ({ label, id, option, register, errors }) => {
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-2 text-gray-600 font-medium text-sm outline-none focus:border-blue-600 focus:shadow-md"
         >
           <option value={""}>Choose</option>
-          {option.map((item) => {
+          {option.map((item: any) => {
             return (
               <option key={item} value={item}>
                 {item}

@@ -7,7 +7,8 @@ type RuppesCoin = {
 const RuppesCoin = ({ bordersize, iconsize }: RuppesCoin) => {
   return (
     <div
-      className={`rounded-full bg-yellow-500 w-fit h-fit p-0.5 border-[${bordersize}px] border-yellow-300 text-white`}
+    style={{borderWidth:+bordersize}}
+      className={`rounded-full bg-yellow-500 w-fit h-fit p-0.5  border-yellow-300 text-white`}
     >
       <FaIndianRupeeSign size={`${iconsize}`} />
     </div>

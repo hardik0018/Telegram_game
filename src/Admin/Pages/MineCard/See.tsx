@@ -21,7 +21,7 @@ const See = () => {
   const hanldeDelete = async (id: any) => {
     setLoading(true);
     let res = await axios.delete(
-      `${import.meta.env.VITE_SERVER_HOST}/mine/delete?id=${id}`
+      `${import.meta.env.VITE_SERVER_HOST}/mine/delete/${id}`
     );
     setLoading(false);
     if (res.data.success) {

@@ -109,6 +109,9 @@ const Table = ({
             })}
         </tbody>
       </table>
+      {!data.length && (
+        <div className="w-full text-center font-semibold">Not data found</div>
+      )}
       {confidelete && (
         <DeleteConfirmation
           close={hanldeDeleteCloseOpen}

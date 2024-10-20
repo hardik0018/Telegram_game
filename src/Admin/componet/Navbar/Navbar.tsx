@@ -17,10 +17,10 @@ const Navbar = () => {
   }, [location]);
 
   const handleSidebar = () => {
-    if (node.classList.contains("hidden")) {
-      node.classList.remove("hidden");
+    if (node?.classList.contains("hidden")) {
+      node?.classList.remove("hidden");
     } else {
-      node.classList.add("hidden");
+      node?.classList.add("hidden");
     }
   };
 
@@ -70,6 +70,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between flex-grow pl-12">
                   <div className="flex items-center space-x-6 text-base capitalize">
                     <LinkBlock to="/Admin" lable={"Home"} />
+                    <LinkBlock to="/Admin/Order" lable={"Order"} />
                     <LinkBlock to="/Admin/Youtube" lable={"Youtube"} />
                     <LinkBlock to="/Admin/Users" lable={"User"} />
                     <LinkBlock to="/Admin/Cards" lable={"Mine Cards"} />

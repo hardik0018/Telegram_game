@@ -9,24 +9,19 @@ import { FaRegShareFromSquare } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { useContext } from "../context/useContext";
 
-type Friend = {
-  name: string;
-  teleID: string;
-};
-
 const Friends = () => {
+  const { Friends } = useContext();
   const [isSharing, setIsSharing] = useState(false);
   const [copy, setcopy] = useState(false);
-  const { Friends } = useContext();
-  const [names, setnames] = useState<Friend[]>([]);
+
   const [referID, setReferID] = useState("");
   const [count, setcount] = useState<Number>(0);
 
   useEffect(() => {
     const telegramData = localStorage.getItem("telegramData");
+   
     if (telegramData) {
       setReferID(telegramData);
-      setnames(Friends);
       setcount(Friends.length);
     }
   }, [Friends]);
@@ -101,7 +96,7 @@ const Friends = () => {
         </div>
         {/* List of Your Friends */}
         <div className="mt-2 mb-16">
-          {names.map((friend, idx) => (
+          {Friends.map((friend: any, idx: number) => (
             <FriendList name={friend.name} key={idx} />
           ))}
         </div>

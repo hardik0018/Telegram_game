@@ -16,7 +16,7 @@ const Update = () => {
       let res: any = await axios.get(
         `${import.meta.env.VITE_SERVER_HOST}/User/getUser/${slug}`
       );
-      console.log(res.data.data);
+    
       return res.data.data;
     },
     refetchOnWindowFocus: false,
@@ -226,7 +226,7 @@ const Update = () => {
   );
 };
 
-const InfoBlock = ({ lable, value }: any) => {
+export const InfoBlock = ({ lable, value }: any) => {
   return (
     <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
       <dt className="text-sm font-medium text-gray-500">{lable}</dt>

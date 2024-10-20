@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Data from "../data/mine";
+import { toast } from "react-toastify";
 
 interface ContextProps {
   id: Number;
@@ -96,9 +96,13 @@ export const ContextProvider = ({ children }: WithChildProps) => {
       };
     }
   }, [Energy]);
-  useEffect(() => {
-    setCards(Data);
-  }, []);
+
+  const findCard = async () => {
+    let res: any = await axios.get(
+      `${import.meta.env.VITE_SERVER_HOST}/mine/get`
+    );
+    setCards(res.data.data);
+  };
 
   useEffect(() => {
     Object(LevelSchema).map((i: any) => {
@@ -145,6 +149,44 @@ export const ContextProvider = ({ children }: WithChildProps) => {
       tap,
     });
   };
+  const fetchUserName = async (telegramUserId: any) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:4000/User/getUser/${telegramUserId}` //changes server with hosted server
+      );
+
+      if (response.data.success) {
+        const { coin, PPH, friends, level, name, tap, teleID, Cards } =
+          response.data.data;
+
+        if (!Cards.length) {
+          findCard();
+        } else {
+          setCards(Cards);
+        }
+        setName(name);
+        setId(teleID);
+        setCoin(coin);
+        setPPH(PPH);
+        setLevel(level);
+        Object(LevelSchema).map((i: any) => {
+          if (i.lvl == level) {
+            setNextLvlup(i.max + 1);
+            setEnergy(i.maxEnergy);
+            setMaxEnergy(i.maxEnergy);
+            setEarnTap(i.Tap);
+          }
+        });
+        setFriends(friends);
+        setEarnTap(tap);
+      } else {
+        setName("User not found.");
+        toast.error(response.data.message);
+      }
+    } catch (e: any) {
+      toast.error(e);
+    }
+  };
   const values = {
     id,
     setId,
@@ -169,6 +211,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     Cards,
     setCards,
     hanldeSave,
+    fetchUserName,
   };
 
   return <context.Provider value={values}>{children}</context.Provider>;

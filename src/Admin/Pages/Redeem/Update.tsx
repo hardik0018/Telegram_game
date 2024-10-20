@@ -4,49 +4,80 @@ import { number, object, string } from "yup";
 import { InputBlock } from "../../componet/InputBlock";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader";
 import SelectBox from "../../componet/SelectBox";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const schema = object({
   coin: number().required("Coin is Required"),
   rupees: number().required("Rupees is Required"),
   qty: number().required("qty is Required"),
   condition: object().nullable(),
-  cndReason: string().nullable(),
-  cndValue: number().nullable(),
+  cndReason: string(),
+  cndValue: number(),
 });
 
-const Add = () => {
+const Update = () => {
+  const { slug } = useParams();
   const [loading, setLoading] = useState(false);
+
+  const { data, isFetching, refetch } = useQuery({
+    queryKey: [`Redeem-${slug}`],
+    queryFn: async () => {
+      let res: any = await axios.get(
+        `${import.meta.env.VITE_SERVER_HOST}/Redeem/getOne/${slug}`
+      );
+    
+      return res.data.data;
+    },
+    refetchOnWindowFocus: false,
+  });
+
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    if (data) {
+      const { rupees, coin, qty } = data;
+      setValue("coin", coin);
+      setValue("rupees", rupees);
+      setValue("qty", qty);
+      if (data.condition) {
+        setValue("cndReason", data.condition.reason);
+        setValue("cndValue", data.condition.value);
+      }
+    }
+  }, [data]);
 
   const onSubmit = async (data: any) => {
     setLoading(true);
     if (data.cndReason && data.cndValue) {
       data.condition = { reason: data.cndReason, value: data.cndValue };
     }
-    let res: any = await axios.post(
-      `${import.meta.env.VITE_SERVER_HOST}/Redeem/Add`,
+    let res: any = await axios.patch(
+      `${import.meta.env.VITE_SERVER_HOST}/Redeem/update/${slug}`,
       data
     );
     setLoading(false);
 
     if (res.data.success) {
-      toast.success("Inserted");
+      toast.success("Updated");
+      refetch();
     } else {
       toast.error(res.data.error);
     }
   };
 
-  if (loading) return <Loader />;
+  if (loading || isFetching) return <Loader />;
   return (
     <div>
       <div className="my-2 mt-6 mx-auto shadow-md border border-gray-300 shadow-gray-400 items-center w-[80%] md:w-[50%]  bg-white text-gray-700 text-md md:text-xl rounded-md ">
@@ -98,7 +129,7 @@ const Add = () => {
               onClick={handleSubmit(onSubmit)}
               className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             >
-              Save
+              Update
             </button>
           </div>
         </div>
@@ -107,4 +138,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default Update;

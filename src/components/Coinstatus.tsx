@@ -1,5 +1,6 @@
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { useContext } from "../context/useContext";
+import { memo } from "react";
 
 const Coinstatus = () => {
   const { coin } = useContext();

@@ -152,7 +152,7 @@ const Add = () => {
                           {...register(`lvl.${i}.lvl`, { valueAsNumber: true })}
                           id="desc"
                           readOnly
-                          className=" bg-gray-50 border text-gray-900 border-1 text-sm rounded-lg  block w-[50%] md:w-[32%] p-2.5"
+                          className=" bg-gray-50 border text-gray-900 border-1 text-sm rounded-lg  block w-[27%] md:w-[32%] p-2.5"
                         />
                         <input
                           type="text"
@@ -160,7 +160,15 @@ const Add = () => {
                             valueAsNumber: true,
                           })}
                           id="desc"
-                          className=" bg-gray-50 border text-gray-900 border-1 text-sm rounded-lg  block  w-[50%] md:w-[32%] p-2.5"
+                          className=" bg-gray-50 border text-gray-900 border-1 text-sm rounded-lg  block  w-[27%] md:w-[32%] p-2.5"
+                        />
+                         <input
+                          type="text"
+                          {...register(`lvl.${i}.PPH`, {
+                            valueAsNumber: true,
+                          })}
+                          id="desc"
+                          className=" bg-gray-50 border text-gray-900 border-1 text-sm rounded-lg  block  w-[27%] md:w-[32%] p-2.5"
                         />
                         {i != 0 && i == Cardlvl.fields.length - 1 && (
                           <MdDelete
@@ -177,6 +185,7 @@ const Add = () => {
                       Cardlvl.append({
                         lvl: Cardlvl.fields.length + 1,
                         coin: 0,
+                        PPH:0,
                       })
                     }
                     className="text-white w-fit bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"

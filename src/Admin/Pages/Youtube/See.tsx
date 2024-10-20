@@ -8,8 +8,8 @@ import Loader from "../../../components/Loader";
 
 const See = () => {
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false)
-  const { data, refetch, isFetching, isLoading,} = useQuery({
+  const [loading, setLoading] = useState(false);
+  const { data, refetch, isFetching, isLoading } = useQuery({
     queryKey: ["YoutubeData"],
     queryFn: async () => {
       let res: any = await axios.get(
@@ -17,14 +17,14 @@ const See = () => {
       );
       return res.data.data;
     },
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
   });
   const hanldeDelete = async (id: any) => {
-    setLoading(true)
+    setLoading(true);
     let res = await axios.delete(
-      `${import.meta.env.VITE_SERVER_HOST}/Youtube/delete?id=${id}`
+      `${import.meta.env.VITE_SERVER_HOST}/Youtube/delete/${id}`
     );
-    setLoading(false)
+    setLoading(false);
     if (res.data.success) {
       toast.success("Deleted");
       refetch();
@@ -32,7 +32,7 @@ const See = () => {
       toast.error(res.data.error);
     }
   };
-  if (isFetching || isLoading||loading) return <Loader />;
+  if (isFetching || isLoading || loading) return <Loader />;
   return (
     <div className="min-h-screen">
       <section className=" p-3 sm:p-5">

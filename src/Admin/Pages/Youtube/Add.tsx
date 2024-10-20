@@ -14,7 +14,7 @@ const schema = object({
 });
 
 const Add = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -24,12 +24,12 @@ const Add = () => {
   });
 
   const onSubmit = async (data: any) => {
-    setLoading(true)
+    setLoading(true);
     let res: any = await axios.post(
       `${import.meta.env.VITE_SERVER_HOST}/Youtube/Add`,
       data
     );
-    setLoading(false)
+    setLoading(false);
 
     if (res.data.success) {
       toast.success("Inserted");
@@ -38,16 +38,14 @@ const Add = () => {
     }
   };
 
-  if(loading)return <Loader/>
+  if (loading) return <Loader />;
   return (
     <div>
       <div className="my-2 mt-6 mx-auto shadow-md border border-gray-300 shadow-gray-400 items-center w-[80%] md:w-[50%]  bg-white text-gray-700 text-md md:text-xl rounded-md ">
         <div className="text-black mx-auto bg-gray-300 rounded-xl shadow-sm shadow-gray-300">
           <div className="p-4 pl-4 text-black bg-white rounded-t-xl">
             <h2 className="font-semibold text-[22px]">Add New Youtube Video</h2>
-            <p className="text-[16px] text-gray-600">
-              Provide Video details.
-            </p>
+            <p className="text-[16px] text-gray-600">Provide Video details.</p>
             <div className="w-full h-0.5 mt- bg-gray-300"></div>
             <div className="mt-2">
               <div className="mt-7 flex flex-col gap-y-3">

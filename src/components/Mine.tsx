@@ -21,12 +21,10 @@ const Mine = () => {
   const handleSingleCard = (e: any) => {
     setCurrentCard(e);
   };
-  const hanldeCardClose = () => {
-    setCurrentCard(false);
-  };
+
   useEffect(() => {
-    if (Cards) {
-      let filterdata = Cards.filter((item) => {
+    if (Cards && Cards.length) {
+      let filterdata = Cards?.filter((item) => {
         if (item.category == currentMenu) return item;
       });
       setFilterCard(filterdata);
@@ -36,15 +34,19 @@ const Mine = () => {
   const hanldeUpdate = (e: any) => {
     let cardData: any = [...Cards];
     cardData.map((item: any) => {
-      const { id, currentlvl, level } = item;
+      const { currentlvl, lvl, maxlvl } = item;
 
-      if (id === e) {
-        if (coin >= level[currentlvl - 1].coin) {
-          setCoin((prev) => +prev - level[currentlvl - 1].coin);
-          setPPH((prev) => +prev + level[currentlvl - 1].PPH);
+      if (item._id === e) {
+        if (coin >= lvl[currentlvl - 1].coin) {
+          if (currentlvl == maxlvl) {
+            toast.error("Mamimum Level is Reached");
+          } else {
+            setCoin((prev) => +prev - lvl[currentlvl - 1].coin);
+            setPPH((prev) => +prev + lvl[currentlvl - 1].PPH);
 
-          item.currentlvl++;
-          toast.success("Success");
+            item.currentlvl++;
+            toast.success("Success");
+          }
         } else {
           toast.error("Coin balance is insufficient");
         }
@@ -76,49 +78,60 @@ const Mine = () => {
           })}
         </div>
         <div className="w-full text-lg mt-7 my-2 gap-2 mb-24 grid grid-cols-2">
-          {FilterCard.map((item) => {
-            return (
-              <div
-                onClick={() => handleSingleCard(item)}
-                key={item.id}
-                className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
-              >
-                <div className="flex items-center px-1 py-1 gap-3">
-                  <img src={item.img} className="w-1/3 h-14 rounded-md" />
-                  <div className="flex flex-col w-2/3">
-                    <h2 className="font-bold">{item.title}</h2>
-                    <p className="text-[12px] mt-1">Profit Per hour</p>
-                    <div className="flex items-center -mt-2">
+          {!!FilterCard.length &&
+            FilterCard.map((item: any) => {
+              const { img, currentlvl, lvl, maxlvl, title } = item;
+              return (
+                <div
+                  onClick={() => handleSingleCard(item)}
+                  key={item._id}
+                  className="rounded-xl bg-gray-700 flex flex-col w-full h-fit"
+                >
+                  <div className="flex items-center px-1 py-1 gap-3">
+                    <img
+                      src={`${import.meta.env.VITE_SERVER_HOST}/images/${img}`}
+                      className="w-1/3 h-14 rounded-md"
+                    />
+                    <div className="flex flex-col w-2/3">
+                      <h2 className="font-bold">{title}</h2>
+                      <p className="text-[12px] mt-1">Profit Per hour</p>
+                      <div className="flex items-center -mt-2">
+                        <RuppesCoin bordersize={2} iconsize={10} />
+                        <p className="text-[14px] ml-1 font-semibold">
+                          {lvl[currentlvl - 1].PPH}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`w-full mx-auto h-[1px] bg-gray-500 opacity-50 `}
+                  ></div>
+                  <div
+                    className={`flex px-2 py-1 items-center gap-3 ${
+                      maxlvl == currentlvl ? "text-gray-400" : "text-gray-300"
+                    }`}
+                  >
+                    <p className="w-1/3 text-[15px] font-semibold">
+                      lvl {lvl[currentlvl - 1].lvl}
+                    </p>
+
+                    <div className="flex items-center w-2/3">
                       <RuppesCoin bordersize={2} iconsize={10} />
-                      <p className="text-[14px] ml-1 font-semibold">
-                        {item.level[item.currentlvl - 1].PPH}
+                      <p className="ml-1 text-[15px] font-semibold">
+                        {lvl[currentlvl - 1].coin}
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="w-full mx-auto h-[1px] bg-gray-500 opacity-50"></div>
-                <div className="flex px-2 py-1 items-center gap-3">
-                  <p className="w-1/3 text-[15px] font-semibold">
-                    lvl {item.level[item.currentlvl - 1].lvl}
-                  </p>
-
-                  <div className="flex items-center w-2/3">
-                    <RuppesCoin bordersize={2} iconsize={10} />
-                    <p className="ml-1 text-[15px] font-semibold">
-                      {item.level[item.currentlvl - 1].coin}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
       {currentCard && (
         <div className="fixed w-full z-20 h-screen -top-4">
           <SingleCard
             data={currentCard}
-            close={hanldeCardClose}
+            close={() => setCurrentCard(false)}
             handleUpdate={hanldeUpdate}
           />
         </div>
@@ -136,27 +149,31 @@ const SingleCard = ({ data, close, handleUpdate }: SingleCard) => {
       ></div>
       <div className="absolute text-center px-2 py-6 w-full h-[65%] bottom-0 -mt-16 rounded-t-[45px] bg-black border-t-4 border-yellow-400 shadow-[0px_-2px_40px_0px_#f6e05e]">
         <div className="w-full mx-auto flex flex-col items-center relative">
-          <img src={`${data.img}`} className="w-60 h-40 rounded-lg" />
+          <img
+            src={`${import.meta.env.VITE_SERVER_HOST}/images/${data.img}`}
+            className="w-60 h-40 rounded-lg"
+          />
           <h2 className="mt-2 text-[30px] font-semibold">{data.title}</h2>
           <p className="text-gray-300 my-1 font-semibold">{data.desc}</p>
-          <p className="text-gray-400 mt-1 text-sm font-semibold">
+          <p className="text-gray-300 mt-1 text-sm font-semibold">
             Profit Per hour
           </p>
-          <div className="flex w-full gap-1 items-center justify-center text-[12px] text-gray-400">
+          <div className="flex w-full gap-1 items-center justify-center text-[12px] text-gray-300">
             <RuppesCoin bordersize={2} iconsize={8} />
-            <span className=" font-semibold text-gray-400">
-              +{data.level[data.currentlvl - 1].PPH}
+            <span className=" font-semibold text-gray-300">
+              +{data.lvl[data.currentlvl - 1].PPH}
             </span>
           </div>
           <div className="flex w-full gap-1 items-center justify-center text-[25px] text-gray-400 my-5">
             <RuppesCoin bordersize={2} iconsize={8} />
             <span className="font-semibold text-white">
-              +{data.level[data.currentlvl - 1].coin}
+              +{data.lvl[data.currentlvl - 1].coin}
             </span>
           </div>
           <button
-            onClick={() => handleUpdate(data.id)}
-            className="w-[90%] text-xl font-semibold py-5 text-center bg-blue-600 rounded-2xl"
+            disabled={data.maxlvl == data.currentlvl}
+            onClick={() => handleUpdate(data._id)}
+            className="w-[90%] text-xl font-semibold py-5 text-center bg-blue-600 rounded-2xl disabled:bg-blue-300"
           >
             Go Ahead
           </button>
