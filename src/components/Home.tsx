@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
 const Home = () => {
-  var socket: any = "";
+  const client: SocketIOClient.Socket = io(import.meta.env.VITE_SERVER_HOST);
   const {
     fetchUserData,
     name,
@@ -28,7 +28,6 @@ const Home = () => {
   useEffect(() => {
     // const urlParams = new URLSearchParams(window.location.search);
     fetchUserData(1183112225);
-    socket = io(import.meta.env.VITE_SERVER_HOST);
     // const telegramData = urlParams.get("tele");
 
     // if (telegramData) {
