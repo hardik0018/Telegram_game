@@ -212,7 +212,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     Cards,
     setCards,
     hanldeSave,
-    fetchUserName,
+    fetchUserData,
   };
 
   return <context.Provider value={values}>{children}</context.Provider>;
