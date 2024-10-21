@@ -5,7 +5,6 @@ import Coinstatus from "./Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
 
 const Home = () => {
   const client: SocketIOClient.Socket = io(import.meta.env.VITE_SERVER_HOST);
