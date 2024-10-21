@@ -21,7 +21,7 @@ const Friends = () => {
   useEffect(() => {
     const telegramData = localStorage.getItem("telegramData");
 
-    console.log(Friends);
+    //console.log(Friends);
 
     if (telegramData) {
       setReferID(telegramData);
