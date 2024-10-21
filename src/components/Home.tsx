@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
   const {
-    fetchUserName,
+    fetchUserData,
     name,
     Energy,
     PPH,
@@ -25,7 +25,7 @@ const Home = () => {
 
   useEffect(() => {
     // const urlParams = new URLSearchParams(window.location.search);
-    fetchUserName(1183112225);
+    fetchUserData(1183112225);
     // const telegramData = urlParams.get("tele");
 
     // if (telegramData) {
@@ -39,7 +39,7 @@ const Home = () => {
     //   try {
     //     fetchUserName(savedTelegramData);
     //   } catch (err) {
-    //    
+    //
     //   }
     // }
   }, []);

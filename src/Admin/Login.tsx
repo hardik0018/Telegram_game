@@ -1,40 +1,29 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import ToastShow from "../componet/ToastContainer";
-import Context from "../context/Context";
-import { useForm } from "react-hook-form";
-import { AdminLogin } from "./api/api";
-import { toast } from "react-toastify";
-import { InputBlock } from "./Pages/Product/Update";
-import Loader from "../componet/Loader/Loader";
-
 function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm();
-  const { setUserType } = useContext(Context);
-  const navigate = useNavigate();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors, isSubmitting },
+  // } = useForm();
+  // const { setUserType } = useContext(Context);
+  // const navigate = useNavigate();
 
-  const Login = handleSubmit(async (value) => {
-    let res = await AdminLogin(value.userName);
-    if (res.success) {
-      toast.success("Login");
-      setUserType("Admin");
-      setTimeout(() => {
-        navigate("/Admin");
-      }, 800);
-    } else {
-      toast.error(res.message);
-    }
-  });
+  // const Login = handleSubmit(async (value) => {
+  //   let res = await AdminLogin(value.userName);
+  //   if (res.success) {
+  //     toast.success("Login");
+  //     setUserType("Admin");
+  //     setTimeout(() => {
+  //       navigate("/Admin");
+  //     }, 800);
+  //   } else {
+  //     toast.error(res.message);
+  //   }
+  // });
 
-  if (isSubmitting) return <Loader />;
   return (
     <div>
       <title>Login</title>
-      <ToastShow />
+
       <div className="font-[sans-serif] text-[#333] bg-white flex items-center justify-center md:h-screen p-4 -mt-10">
         <div className="max-w-6xl rounded-md p-6">
           <div className="grid md:grid-cols-2 items-center gap-8">
@@ -51,13 +40,13 @@ function Login() {
                 <h3 className="text-4xl font-extrabold text-blue-600">Login</h3>
               </div>
               <div>
-                <InputBlock
+                {/* <InputBlock
                   register={register("userName")}
                   id={"userName"}
                   lable="Enter the UserName"
                   readOnly={false}
                   errors={errors.userName}
-                />
+                /> */}
               </div>
 
               <div className="mt-12">

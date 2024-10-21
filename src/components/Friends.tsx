@@ -8,6 +8,7 @@ import RuppesCoin from "./RuppesCoin";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { useContext } from "../context/useContext";
+import { toast } from "react-toastify";
 
 const Friends = () => {
   const { Friends } = useContext();
@@ -19,7 +20,7 @@ const Friends = () => {
 
   useEffect(() => {
     const telegramData = localStorage.getItem("telegramData");
-   
+
     if (telegramData) {
       setReferID(telegramData);
       setcount(Friends.length);
@@ -43,12 +44,9 @@ const Friends = () => {
   const handleCopyClick = () => {
     if (!copy) {
       const linkToCopy: string = `https://t.me/BigEarnMoneyNewBot?start=${referID}`;
-      const el: HTMLInputElement = document.createElement("input");
-      el.value = linkToCopy;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand("copy");
-      document.body.removeChild(el);
+
+      navigator.clipboard.writeText(linkToCopy);
+      toast.success("Copied");
       setcopy(true);
     }
   };

@@ -4,6 +4,7 @@ import RuppesCoin from "./RuppesCoin";
 import { useQuery } from "@tanstack/react-query";
 import { FetchRedeemData } from "../Admin/api/api";
 import Loader from "./Loader";
+import { Link } from "react-router-dom";
 
 const Earn = () => {
   const [currentCard, setCurrentCard] = useState("");
@@ -20,6 +21,11 @@ const Earn = () => {
   return (
     <div className="text-center">
       <h2 className="font-bold text-2xl my-2">Rewards</h2>
+      <div className="flex justify-end w-full">
+        <Link to={"/RedeemHistory"} className="underline  pr-4">
+          My Rewards
+        </Link>
+      </div>
       <div className="grid grid-cols-2 gap-2 mt-3 mb-24 mx-2">
         {data &&
           data.map((item: any) => {

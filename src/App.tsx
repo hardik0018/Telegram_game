@@ -6,6 +6,7 @@ import Friends from "./components/Friends";
 import Earn from "./components/Earn";
 import Settings from "./components/Settings";
 import Task from "./components/Task";
+import RedeemHistory from "./components/RedeemHistory";
 
 import AdminAuth from "./Admin/Auth";
 import AdminHome from "./Admin/Home";
@@ -50,6 +51,10 @@ function App() {
         {
           path: "/Earn",
           element: <Earn />,
+        },
+        {
+          path: "/RedeemHistory",
+          element: <RedeemHistory />,
         },
       ],
     },

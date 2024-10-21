@@ -26,6 +26,7 @@ interface ContextProps {
   Cards: Array<any>;
   setCards: any;
   hanldeSave?: any;
+  fetchUserData?: any;
 }
 
 const IntialValues: ContextProps = {
@@ -149,7 +150,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
       tap,
     });
   };
-  const fetchUserName = async (telegramUserId: any) => {
+  const fetchUserData = async (telegramUserId: any) => {
     try {
       const response = await axios.get(
         `http://localhost:4000/User/getUser/${telegramUserId}` //changes server with hosted server
