@@ -42,7 +42,7 @@ const Home = () => {
     //   try {
     //     fetchUserName(savedTelegramData);
     //   } catch (err) {
-    //
+    //   toast.error("sdd")
     //   }
     // }
   }, []);
