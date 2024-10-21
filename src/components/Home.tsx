@@ -5,6 +5,8 @@ import Coinstatus from "./Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
+let socket;
 
 const Home = () => {
   const {
@@ -26,6 +28,7 @@ const Home = () => {
   useEffect(() => {
     // const urlParams = new URLSearchParams(window.location.search);
     fetchUserData(1183112225);
+    socket = io(import.meta.env.VITE_SERVER_HOST);
     // const telegramData = urlParams.get("tele");
 
     // if (telegramData) {
