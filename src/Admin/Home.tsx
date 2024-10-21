@@ -85,13 +85,4 @@ const MainBlock = ({
   );
 };
 
-const ChartBlock = ({ chart }: any) => {
-  return (
-    <div className="w-full my-2 relative">
-      <div className="border border-gray-400 rounded-md shadow-md shadow-gray-400 p-2 md:px-4 md:py-5 ">
-        {chart}
-      </div>
-    </div>
-  );
-};
 export default Home;

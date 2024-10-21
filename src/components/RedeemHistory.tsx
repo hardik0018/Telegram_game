@@ -6,12 +6,11 @@ import { FaRegCopy } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { useContext } from "../context/useContext";
 import { toast } from "react-toastify";
 
 const RedeemHistory = () => {
   const [currentRedeem, setCurrentRedeem] = useState(false);
-  const { id } = useContext();
+
 
   const { data } = useQuery({
     queryKey: [`1183112225-Rewards`],
