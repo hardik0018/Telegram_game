@@ -4,12 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../../../components/Loader";
 import { FaRegEdit } from "react-icons/fa";
-import { CgEye } from "react-icons/cg";
 import { Link } from "react-router-dom";
 
 const See = () => {
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const { data, isFetching, isLoading } = useQuery({
     queryKey: ["OrderData"],
     queryFn: async () => {
@@ -21,7 +20,7 @@ const See = () => {
     refetchOnWindowFocus: false,
   });
 
-  if (isFetching || isLoading || loading) return <Loader />;
+  if (isFetching || isLoading) return <Loader />;
   return (
     <div className="min-h-screen">
       <section className=" p-3 sm:p-5">
