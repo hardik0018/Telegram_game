@@ -4,10 +4,11 @@ import RuppesCoin from "./RuppesCoin";
 import Coinstatus from "./Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import io from "socket.io-client";
 
 const Home = () => {
-  const client: SocketIOClient.Socket = io(import.meta.env.VITE_SERVER_HOST);
+  const { current: socket } = useRef(io(import.meta.env.VITE_SERVER_HOST));
   const {
     fetchUserData,
     name,
@@ -19,6 +20,14 @@ const Home = () => {
     nextLvlup,
   } = useContext();
   const [ProcessBar, setProcessBar] = useState(0);
+
+  useEffect(() => {
+    return () => {
+        if (socket) {
+            socket.close();
+        }
+    };
+}, [socket]);
 
   useEffect(() => {
     setProcessBar((+coin * 100) / +nextLvlup - 1);
