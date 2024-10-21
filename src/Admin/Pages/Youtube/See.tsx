@@ -45,7 +45,7 @@ const See = () => {
           />
           <div className="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <Table
-              headvalue={["title", "desc"]}
+              headvalue={["title", "desc", "coin"]}
               img={false}
               action={true}
               unique={"_id"}

@@ -31,6 +31,7 @@ const Earn = () => {
           data.map((item: any) => {
             return (
               <div
+              key={item._id}
                 onClick={() => handleSingleCard(item)}
                 className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
               >

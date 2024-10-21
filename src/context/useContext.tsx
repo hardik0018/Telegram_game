@@ -25,6 +25,8 @@ interface ContextProps {
   setEarnTap: Dispatch<SetStateAction<Number | number>>;
   Cards: Array<any>;
   setCards: any;
+  Youtube: Array<any>;
+  setYoutube: any;
   hanldeSave?: any;
   fetchUserData?: any;
 }
@@ -52,6 +54,8 @@ const IntialValues: ContextProps = {
   setEarnTap: () => undefined,
   Cards: [],
   setCards: () => undefined,
+  Youtube: [],
+  setYoutube: () => undefined,
 };
 
 const LevelSchema: Object = [
@@ -85,6 +89,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [EarnTap, setEarnTap] = useState(IntialValues.EarnTap);
   const [MaxEnergy, setMaxEnergy] = useState(IntialValues.MaxEnergy);
   const [Cards, setCards] = useState(IntialValues.Cards);
+  const [Youtube, setYoutube] = useState(IntialValues.Youtube);
 
   useEffect(() => {
     if (+Energy < +MaxEnergy) {
@@ -103,6 +108,13 @@ export const ContextProvider = ({ children }: WithChildProps) => {
       `${import.meta.env.VITE_SERVER_HOST}/mine/get`
     );
     setCards(res.data.data);
+  };
+  const findYoutubeTask = async () => {
+    let res: any = await axios.get(
+      `${import.meta.env.VITE_SERVER_HOST}/Youtube/user/get`
+    );
+
+    setYoutube(res.data.data);
   };
 
   useEffect(() => {
@@ -128,8 +140,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   }, [coin]);
 
   useEffect(() => {
-    hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap);
-  }, [coin, PPH, Friends, Cards, level, EarnTap]);
+    hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap, Youtube);
+  }, [coin, PPH, Friends, Cards, level, EarnTap, Youtube]);
 
   const hanldeSave = async (
     id: Number,
@@ -138,32 +150,45 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     level: Number,
     Cards: any,
     Friends: any,
-    tap: Number
+    tap: Number,
+    Youtube: any
   ) => {
-    await axios.post(`http://localhost:4000/User/UpdateData`, {
-      id,
-      coin,
-      PPH,
-      level,
-      Cards,
-      Friends,
-      tap,
-    });
+    try {
+      await axios.patch(
+        `${import.meta.env.VITE_SERVER_HOST}/User/UpdateData/${id}`,
+        {
+          coin,
+          PPH,
+          level,
+          Cards,
+          Friends,
+          youtube: Youtube,
+          tap,
+        }
+      );
+    } catch (error: any) {
+      toast.error(error);
+    }
   };
   const fetchUserData = async (telegramUserId: any) => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/User/getUser/${telegramUserId}` //changes server with hosted server
+        `${import.meta.env.VITE_SERVER_HOST}/User/getUser/${telegramUserId}` //changes server with hosted server
       );
 
       if (response.data.success) {
-        const { coin, PPH, friends, level, name, tap, teleID, Cards } =
+        const { coin, PPH, friends, level, name, tap, teleID, Cards, youtube } =
           response.data.data;
 
         if (!Cards.length) {
           findCard();
         } else {
           setCards(Cards);
+        }
+        if (!youtube.length) {
+          findYoutubeTask();
+        } else {
+          setYoutube(youtube);
         }
         setName(name);
         setId(teleID);
@@ -213,6 +238,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     setCards,
     hanldeSave,
     fetchUserData,
+    Youtube,
+    setYoutube,
   };
 
   return <context.Provider value={values}>{children}</context.Provider>;

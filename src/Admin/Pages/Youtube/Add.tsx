@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { object, string } from "yup";
+import { number, object, string } from "yup";
 import { InputBlock } from "../../componet/InputBlock";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ const schema = object({
   title: string().required("Title is Required"),
   desc: string().required("Desc is Required"),
   code: string().required("Code is Required"),
+  coin: number().required("Coin is Required"),
 });
 
 const Add = () => {
@@ -61,6 +62,12 @@ const Add = () => {
                   id="desc"
                   errors={errors.desc}
                 />
+                  <InputBlock
+                    lable="Coin"
+                    register={register("coin",{valueAsNumber:true})}
+                    id="coin"
+                    errors={errors.coin}
+                  />
                 <InputBlock
                   lable="Code"
                   register={register("code")}
