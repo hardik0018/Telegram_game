@@ -6,9 +6,10 @@ import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-let socket:any;
+
 
 const Home = () => {
+  let socket:any;
   const {
     fetchUserData,
     name,
