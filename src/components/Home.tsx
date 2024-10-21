@@ -7,9 +7,8 @@ import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-
 const Home = () => {
-  let socket:any;
+  var socket: any = "";
   const {
     fetchUserData,
     name,
