@@ -11,7 +11,15 @@ import axios from "axios";
 
 const Earn = () => {
   const [currentCard, setCurrentCard] = useState("");
-  const { coin, setCoin, level, Friends, PPH, id, name } = useContext();
+  const {
+    coin: CurrentCoin,
+    setCoin,
+    level,
+    Friends,
+    PPH,
+    id,
+    name,
+  } = useContext();
   const { data, isFetching, isLoading } = useQuery({
     queryKey: ["RedeemData"],
     queryFn: () => FetchRedeemData(),
@@ -23,7 +31,7 @@ const Earn = () => {
 
   const hanldeOrder = (item: any) => {
     const { coin, condition, rupees } = item;
-    if (coin <= coin) {
+    if (coin <= CurrentCoin) {
       if (condition) {
         const { reason, value } = condition;
         if (reason == "Level") {
