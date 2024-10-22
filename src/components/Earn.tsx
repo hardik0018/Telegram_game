@@ -5,9 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import { FetchRedeemData } from "../Admin/api/api";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
+import { useContext } from "../context/useContext";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const Earn = () => {
   const [currentCard, setCurrentCard] = useState("");
+  const { coin, setCoin, level, Friends, PPH, id, name } = useContext();
   const { data, isFetching, isLoading } = useQuery({
     queryKey: ["RedeemData"],
     queryFn: () => FetchRedeemData(),
@@ -15,6 +19,60 @@ const Earn = () => {
   });
   const handleSingleCard = (e: any) => {
     setCurrentCard(e);
+  };
+
+  const hanldeOrder = (item: any) => {
+    const { coin, condition, rupees } = item;
+    if (coin <= coin) {
+      if (condition) {
+        const { reason, value } = condition;
+        if (reason == "Level") {
+          if (value <= level) {
+            ConfirmOrder(coin, rupees, item._id);
+          } else {
+            toast.error(`Minimum ${value} Level is Required`);
+          }
+        } else if (reason == "Invite A Friend") {
+          if (value <= Friends.length) {
+            ConfirmOrder(coin, rupees, item._id);
+          } else {
+            toast.error(`Minimum ${value} Friend Is Invite`);
+          }
+        } else if (reason == "PPH") {
+          if (value <= PPH) {
+            ConfirmOrder(coin, rupees, item._id);
+          } else {
+            toast.error(`Minimum ${value} Profit Per Hours Required`);
+          }
+        }
+      } else {
+        ConfirmOrder(coin, rupees, item._id);
+      }
+    } else {
+      toast.error("Coin is Not Efficiency");
+    }
+  };
+
+  const ConfirmOrder = async (coin: number, rupees: number, Redeemid: any) => {
+    let date = new Date();
+    let orderId = `${date.getDate()}${date.getMonth()}${date.getFullYear()}${date.getMilliseconds()}`;
+    let res = await axios.post(
+      `${import.meta.env.VITE_SERVER_HOST}/Order/Add`,
+      {
+        Redeemid,
+        rupees,
+        orderId,
+        teleID: id,
+        name,
+      }
+    );
+    console.log(res);
+    if (res.data.success) {
+      toast.success("Success");
+      setCoin((pre) => +pre - coin);
+    } else {
+      toast.error(res.data.message);
+    }
   };
 
   if (isFetching || isLoading) return <Loader />;
@@ -31,7 +89,7 @@ const Earn = () => {
           data.map((item: any) => {
             return (
               <div
-              key={item._id}
+                key={item._id}
                 onClick={() => handleSingleCard(item)}
                 className="rounded-xl bg-gray-700 flex flex-col w-full h-fit cursor-pointer"
               >
@@ -58,14 +116,18 @@ const Earn = () => {
       </div>
       {currentCard && (
         <div className="fixed w-full z-20 h-screen -top-4">
-          <SingleCard item={currentCard} close={() => setCurrentCard("")} />
+          <SingleCard
+            item={currentCard}
+            close={() => setCurrentCard("")}
+            hanldeOrder={hanldeOrder}
+          />
         </div>
       )}
     </div>
   );
 };
 
-const SingleCard = ({ item, close }: any) => {
+const SingleCard = ({ item, close, hanldeOrder }: any) => {
   return (
     <div className="relative h-full w-full mt-5">
       <div
@@ -84,7 +146,10 @@ const SingleCard = ({ item, close }: any) => {
             <RuppesCoin bordersize={2} iconsize={18} />
             <span className="font-semibold text-white">{item.coin}</span>
           </div>
-          <button className="w-[90%] text-xl font-semibold py-5 text-center bg-blue-600 rounded-2xl">
+          <button
+            onClick={() => hanldeOrder(item)}
+            className="w-[90%] text-xl font-semibold py-5 text-center bg-blue-600 rounded-2xl"
+          >
             Claim Now
           </button>
           <div

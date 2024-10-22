@@ -26,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     console.log(socket);
-    socket.emit("Start",1183112225);
+    socket.emit("Start", 1183112225);
     // const urlParams = new URLSearchParams(window.location.search);
     fetchUserData(1183112225);
     // const telegramData = urlParams.get("tele");

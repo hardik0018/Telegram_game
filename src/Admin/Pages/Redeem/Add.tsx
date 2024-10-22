@@ -78,7 +78,7 @@ const Add = () => {
                 <SelectBox
                   label={"Condition Reason"}
                   id={"condition"}
-                  option={["Invite A Friend", "Level", "PPH", "Cards"]}
+                  option={["Invite A Friend", "Level", "PPH"]}
                   register={register("cndReason")}
                   errors={errors.cndReason}
                 />

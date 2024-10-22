@@ -283,7 +283,7 @@ const DailyCheckIn = ({ Cliam, close, checkin }: any) => {
             {CheckIndata.map((item: any, i: number) => {
               return (
                 <div
-                 key={i}
+                  key={i}
                   className={`rounded-lg ${
                     checkin.streak > i ? "bg-green-500" : "bg-gray-800"
                   }  flex flex-col items-center w-[30%] gap-y-0.5`}
