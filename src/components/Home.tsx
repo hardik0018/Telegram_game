@@ -4,14 +4,13 @@ import RuppesCoin from "./RuppesCoin";
 import Coinstatus from "./Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
-import { useEffect, useRef, useState } from "react";
-import io from "socket.io-client";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { current: socket } = useRef(io(import.meta.env.VITE_SERVER_HOST));
   const {
     fetchUserData,
     name,
+    socket,
     Energy,
     PPH,
     EarnTap,
@@ -22,18 +21,12 @@ const Home = () => {
   const [ProcessBar, setProcessBar] = useState(0);
 
   useEffect(() => {
-    return () => {
-        if (socket) {
-            socket.close();
-        }
-    };
-}, [socket]);
-
-  useEffect(() => {
     setProcessBar((+coin * 100) / +nextLvlup - 1);
   }, [coin]);
 
   useEffect(() => {
+    console.log(socket);
+    socket.emit("Start",1183112225);
     // const urlParams = new URLSearchParams(window.location.search);
     fetchUserData(1183112225);
     // const telegramData = urlParams.get("tele");

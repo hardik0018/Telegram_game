@@ -1,6 +1,13 @@
 import axios from "axios";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { toast } from "react-toastify";
+import { io, Socket } from "socket.io-client";
 
 interface ContextProps {
   id: Number;
@@ -27,8 +34,11 @@ interface ContextProps {
   setCards: any;
   Youtube: Array<any>;
   setYoutube: any;
+  checkin: Object;
+  setCheckin: any;
   hanldeSave?: any;
   fetchUserData?: any;
+  socket: Socket;
 }
 
 const IntialValues: ContextProps = {
@@ -56,6 +66,12 @@ const IntialValues: ContextProps = {
   setCards: () => undefined,
   Youtube: [],
   setYoutube: () => undefined,
+  checkin: {
+    streak: 0,
+    lastUpdate: undefined,
+  },
+  setCheckin: () => {},
+  socket: io(import.meta.env.VITE_SERVER_HOST),
 };
 
 const LevelSchema: Object = [
@@ -90,7 +106,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [MaxEnergy, setMaxEnergy] = useState(IntialValues.MaxEnergy);
   const [Cards, setCards] = useState(IntialValues.Cards);
   const [Youtube, setYoutube] = useState(IntialValues.Youtube);
-
+  const [checkin, setCheckin] = useState(IntialValues.checkin);
+  const socketRef: any = useRef(io({ autoConnect: false }));
   useEffect(() => {
     if (+Energy < +MaxEnergy) {
       const interval = setInterval(function () {
@@ -140,7 +157,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   }, [coin]);
 
   useEffect(() => {
-    hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap, Youtube);
+    // hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap, Youtube);
   }, [coin, PPH, Friends, Cards, level, EarnTap, Youtube]);
 
   const hanldeSave = async (
@@ -177,13 +194,26 @@ export const ContextProvider = ({ children }: WithChildProps) => {
       );
 
       if (response.data.success) {
-        const { coin, PPH, friends, level, name, tap, teleID, Cards, youtube } =
-          response.data.data;
+        const {
+          coin,
+          PPH,
+          friends,
+          level,
+          name,
+          tap,
+          teleID,
+          Cards,
+          youtube,
+          checkin,
+        } = response.data.data;
 
         if (!Cards.length) {
           findCard();
         } else {
           setCards(Cards);
+        }
+        if (checkin) {
+          setCheckin(checkin);
         }
         if (!youtube.length) {
           findYoutubeTask();
@@ -240,6 +270,9 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     fetchUserData,
     Youtube,
     setYoutube,
+    checkin,
+    setCheckin,
+    socket: socketRef.current,
   };
 
   return <context.Provider value={values}>{children}</context.Provider>;
