@@ -16,7 +16,7 @@ import CheckIndata from "../data/DailyCheckin";
 const Task = () => {
   const [currentYoutubeCard, setcurrentYoutubeCard] = useState(false);
   const [checkInCard, setCheckInCard] = useState(false);
-  const [loading, setLoading] = useState(false);
+
   const { id, Youtube, setYoutube, setCoin, checkin, setCheckin } =
     useContext();
 
@@ -43,7 +43,6 @@ const Task = () => {
   };
 
   const handleCheckIn = async (coin: number) => {
-    setLoading(true);
     let copy: any = checkin;
     let date: Date = new Date();
     let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
@@ -67,7 +66,6 @@ const Task = () => {
       }
     );
 
-    setLoading(false);
     if (res.data.success) {
       toast.success("Claimed");
       setCoin((pre) => +pre + coin);
