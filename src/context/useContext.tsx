@@ -157,7 +157,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   }, [coin]);
 
   useEffect(() => {
-    // hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap, Youtube);
+    hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap, Youtube);
   }, [coin, PPH, Friends, Cards, level, EarnTap, Youtube]);
 
   const hanldeSave = async (
@@ -215,6 +215,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
         if (checkin) {
           setCheckin(checkin);
         }
+
         if (!youtube.length) {
           findYoutubeTask();
         } else {
