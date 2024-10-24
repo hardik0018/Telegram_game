@@ -3,7 +3,7 @@ import RuppesCoin from "./RuppesCoin";
 import { FaYoutube } from "react-icons/fa";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import TrueCheck from "./TrueCheck";
-import { memo, useState } from "react";
+import { memo } from "react";
 import { CgClose } from "react-icons/cg";
 import { Link } from "react-router-dom";
 
