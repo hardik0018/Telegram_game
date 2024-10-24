@@ -4,28 +4,26 @@ import {
   IoGiftSharp,
 } from "react-icons/io5";
 import { LuDog, LuRefreshCw } from "react-icons/lu";
-import RuppesCoin from "./RuppesCoin";
+import RuppesCoin from "../components/RuppesCoin";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { useContext } from "../context/useContext";
 import { toast } from "react-toastify";
+import FriendList from "../components/FriendList";
 
 const Friends = () => {
   const { Friends } = useContext();
   const [isSharing, setIsSharing] = useState(false);
-  const [copy, setcopy] = useState(false);
+  const [copy, setCopy] = useState(false);
 
   const [referID, setReferID] = useState("");
-  const [count, setcount] = useState<Number>(0);
+  const [count, setCount] = useState<Number>(0);
 
   useEffect(() => {
     const telegramData = localStorage.getItem("telegramData");
-
-    console.log(Friends);
-
     if (telegramData) {
       setReferID(telegramData);
-      setcount(Friends.length);
+      setCount(Friends.length);
     }
   }, [Friends]);
 
@@ -49,7 +47,7 @@ const Friends = () => {
 
       navigator.clipboard.writeText(linkToCopy);
       toast.success("Copied");
-      setcopy(true);
+      setCopy(true);
     }
   };
 
@@ -96,9 +94,7 @@ const Friends = () => {
         </div>
         {/* List of Your Friends */}
         <div className="mt-2 mb-16">
-          {Friends.map((friend: any, idx: number) => (
-            <FriendList name={friend.name} key={idx} />
-          ))}
+          <FriendList Friends={Friends} />
         </div>
       </div>
     </div>
@@ -106,20 +102,3 @@ const Friends = () => {
 };
 
 export default Friends;
-
-export const FriendList = ({ name }: { name: string }) => {
-  return (
-    <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-      <LuDog size={33} className="ml-2" />
-      <div>
-        <p className="font-semibold text-sm">{name}</p>
-        <div className="flex w-full gap-1 items-center text-[13px] text-gray-400">
-          <p>Level:</p>
-          <RuppesCoin bordersize={2} iconsize={8} />
-          <span className=" font-semibold text-white">100</span>
-          <p>(100)</p>
-        </div>
-      </div>
-    </div>
-  );
-};

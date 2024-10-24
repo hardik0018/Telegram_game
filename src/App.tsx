@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layout/Layout";
-import Home from "./components/Home";
-import Mine from "./components/Mine";
-import Friends from "./components/Friends";
-import Earn from "./components/Earn";
+import Home from "./pages/Home";
+import Mine from "./pages/Mine";
+import Friends from "./pages/Friends";
+import Earn from "./pages/Earn";
 import Settings from "./components/Settings";
-import Task from "./components/Task";
+import Task from "./pages/Task";
 import RedeemHistory from "./components/RedeemHistory";
 
 import AdminAuth from "./Admin/Auth";

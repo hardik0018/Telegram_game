@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
-import RuppesCoin from "./RuppesCoin";
+import RuppesCoin from "../components/RuppesCoin";
 import { useQuery } from "@tanstack/react-query";
 import { FetchRedeemData } from "../Admin/api/api";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
 import { useContext } from "../context/useContext";
 import { toast } from "react-toastify";
@@ -24,6 +24,7 @@ const Earn = () => {
     queryKey: ["RedeemData"],
     queryFn: () => FetchRedeemData(),
     refetchOnWindowFocus: false,
+    staleTime: Infinity,
   });
   const handleSingleCard = (e: any) => {
     setCurrentCard(e);
@@ -74,7 +75,7 @@ const Earn = () => {
         name,
       }
     );
-    console.log(res);
+ 
     if (res.data.success) {
       toast.success("Success");
       setCoin((pre) => +pre - coin);
@@ -95,6 +96,7 @@ const Earn = () => {
       <div className="grid grid-cols-2 gap-2 mt-3 mb-24 mx-2">
         {data &&
           data.map((item: any) => {
+      
             return (
               <div
                 key={item._id}

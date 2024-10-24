@@ -1,7 +1,7 @@
-import CoinButton from "./CoinButton";
+import CoinButton from "../components/CoinButton";
 import { LuDog } from "react-icons/lu";
-import RuppesCoin from "./RuppesCoin";
-import Coinstatus from "./Coinstatus";
+import RuppesCoin from "../components/RuppesCoin";
+import Coinstatus from "../components/Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
