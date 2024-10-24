@@ -39,6 +39,8 @@ interface ContextProps {
   hanldeSave?: any;
   fetchUserData?: any;
   socket: Socket;
+  followOn: any;
+  setFollowOn: any;
 }
 
 const IntialValues: ContextProps = {
@@ -72,6 +74,11 @@ const IntialValues: ContextProps = {
   },
   setCheckin: () => {},
   socket: io(import.meta.env.VITE_SERVER_HOST),
+  followOn: [
+    { platForm: "Youtube", status: false, coin: 1000, link: "" },
+    { platForm: "Instagram", status: false, coin: 1000, link: "" },
+  ],
+  setFollowOn: () => {},
 };
 
 const LevelSchema: Object = [
@@ -107,6 +114,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [Cards, setCards] = useState(IntialValues.Cards);
   const [Youtube, setYoutube] = useState(IntialValues.Youtube);
   const [checkin, setCheckin] = useState(IntialValues.checkin);
+  const [followOn, setFollowOn] = useState(IntialValues.followOn);
   const socketRef: any = useRef(io({ autoConnect: false }));
   useEffect(() => {
     if (+Energy < +MaxEnergy) {
@@ -157,8 +165,18 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   }, [coin]);
 
   useEffect(() => {
-    hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap, Youtube);
-  }, [coin, PPH, Friends, Cards, level, EarnTap, Youtube]);
+    hanldeSave(
+      id,
+      coin,
+      PPH,
+      level,
+      Cards,
+      Friends,
+      EarnTap,
+      Youtube,
+      followOn
+    );
+  }, [coin, PPH, Friends, Cards, level, EarnTap, Youtube, followOn]);
 
   const hanldeSave = async (
     id: Number,
@@ -168,7 +186,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     Cards: any,
     Friends: any,
     tap: Number,
-    Youtube: any
+    Youtube: any,
+    followOn: any
   ) => {
     try {
       await axios.patch(
@@ -181,6 +200,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
           Friends,
           youtube: Youtube,
           tap,
+          followOn,
         }
       );
     } catch (error: any) {
@@ -205,6 +225,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
           Cards,
           youtube,
           checkin,
+          followOn,
         } = response.data.data;
 
         if (!Cards.length) {
@@ -214,6 +235,9 @@ export const ContextProvider = ({ children }: WithChildProps) => {
         }
         if (checkin) {
           setCheckin(checkin);
+        }
+        if (followOn) {
+          setFollowOn(followOn);
         }
 
         if (!youtube.length) {
@@ -274,6 +298,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     checkin,
     setCheckin,
     socket: socketRef.current,
+    followOn,
+    setFollowOn,
   };
 
   return <context.Provider value={values}>{children}</context.Provider>;

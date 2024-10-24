@@ -25,7 +25,7 @@ const YoutubeTask = ({ Youtube, handleCliam }: any) => {
                 <p className="font-semibold text-sm">{title}</p>
                 <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
                   <RuppesCoin bordersize={2} iconsize={8} />
-                  <span className=" font-semibold text-white">{coin}</span>
+                  <span className=" font-semibold text-white">+{coin}</span>
                 </div>
               </div>
               <div className="flex justify-end mr-3">

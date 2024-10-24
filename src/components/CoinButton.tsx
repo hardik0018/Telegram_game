@@ -1,40 +1,10 @@
-import { memo, useCallback, useState } from "react";
+import { memo } from "react";
 import Coin from "../assets/images/coin.jpg";
-import { useContext } from "../context/useContext";
-interface FloatingText {
-  id: number;
-  x: number;
-  y: number;
-}
 
-const CoinButton = () => {
-  const { setCoin, setEnergy, Energy, EarnTap } = useContext();
-  const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
-  const [nextId, setNextId] = useState(0);
-
-  const handleClick = useCallback((e: any) => {
-    if (+Energy > 0) {
-      const { clientX: x, clientY: y } = e;
-      setNextId((prev) => prev + 1);
-      const newText: FloatingText = { id: nextId, x, y };
-      setFloatingTexts((prev) => [...prev, newText]);
-      hanldeCoinStatus();
-      setTimeout(() => {
-        setFloatingTexts((prev) =>
-          prev.filter((text) => text.id !== newText.id)
-        );
-      }, 2000);
-    }
-  }, []);
-
-  const hanldeCoinStatus = useCallback(() => {
-    setCoin((prev) => +prev + +EarnTap);
-    setEnergy((prev) => +prev - +EarnTap);
-  }, [floatingTexts]);
-
+const CoinButton = ({ handleClick, floatingTexts ,EarnTap}: any) => {
   return (
     <div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-full">
         <img
           src={Coin}
           alt="coin"

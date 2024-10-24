@@ -4,7 +4,13 @@ import RuppesCoin from "../components/RuppesCoin";
 import Coinstatus from "../components/Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
+interface FloatingText {
+  id: number;
+  x: number;
+  y: number;
+}
 
 const Home = () => {
   const {
@@ -17,6 +23,8 @@ const Home = () => {
     MaxEnergy,
     coin,
     nextLvlup,
+    setCoin,
+    setEnergy,
   } = useContext();
   const [ProcessBar, setProcessBar] = useState(0);
 
@@ -45,6 +53,24 @@ const Home = () => {
     //   toast.error("sdd")
     //   }
     // }
+  }, []);
+  const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
+  const [nextId, setNextId] = useState(0);
+
+  const handleClick = useCallback((e: any) => {
+    if (+Energy > 0) {
+      const { clientX: x, clientY: y } = e;
+      setNextId((prev) => prev + 1);
+      const newText: FloatingText = { id: nextId, x, y };
+      setFloatingTexts((prev) => [...prev, newText]);
+      setCoin((prev) => +prev + +EarnTap);
+      setEnergy((prev) => +prev - +EarnTap);
+      setTimeout(() => {
+        setFloatingTexts((prev) =>
+          prev.filter((text) => text.id !== newText.id)
+        );
+      }, 2000);
+    }
   }, []);
 
   // Function to fetch user name from the backend
@@ -90,7 +116,11 @@ const Home = () => {
           ></div>
         </div>
         <div className="mt-10 h-[50%] flex items-center">
-          <CoinButton />
+          <CoinButton
+            handleClick={handleClick}
+            floatingTexts={floatingTexts}
+            EarnTap={EarnTap}
+          />
         </div>
         <div className="h-[10%] flex justify-start w-full font-bold items-center  ">
           <BsLightningChargeFill size={23} className="text-yellow-500 mr-1" />

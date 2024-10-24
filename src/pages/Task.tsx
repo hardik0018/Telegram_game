@@ -1,7 +1,5 @@
-import { FaYoutube } from "react-icons/fa";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FcPlanner } from "react-icons/fc";
-import { LuInstagram } from "react-icons/lu";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import RuppesCoin from "../components/RuppesCoin";
 import { CgClose } from "react-icons/cg";
@@ -11,12 +9,22 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import CheckIndata from "../data/DailyCheckin";
 import YoutubeTask from "../components/YoutubeTask";
+import PlatFormTask from "../components/PlatFormTask";
 
 const Task = () => {
   const [checkInCard, setCheckInCard] = useState(false);
+  const [platFormcard, setPlatFormcard] = useState(false);
 
-  const { id, Youtube, setYoutube, setCoin, checkin, setCheckin } =
-    useContext();
+  const {
+    id,
+    Youtube,
+    setYoutube,
+    setCoin,
+    checkin,
+    setCheckin,
+    followOn,
+    setFollowOn,
+  } = useContext();
 
   const handleCliam = useCallback(async (id: any, code: any) => {
     let res = await axios.get(
@@ -48,7 +56,7 @@ const Task = () => {
     let CliamDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
     let yesterdayExtrack = `${yesterday.getDate()}-${yesterday.getMonth()}-${yesterday.getFullYear()}`;
 
-    if (copy.lastUpdate == yesterdayExtrack) {
+    if (copy.lastUpdate == yesterdayExtrack && copy.streak != 8) {
       copy.streak++;
     } else {
       copy.streak = 1;
@@ -72,16 +80,27 @@ const Task = () => {
     }
   };
 
+  const handleCompleteFolloOn = useCallback((e: string) => {
+    let followCheck = followOn;
+
+    if (e == "Youtube") {
+      followCheck[0].status = true;
+    } else {
+      followCheck[1].status = true;
+    }
+    setFollowOn(followCheck);
+  }, []);
+
   return (
     <div className="relative">
-      <div className="flex flex-col items-center h-[30%] mt-10 text-center px-3">
+      <div className="flex flex-col items-center h-[30%] mt-10 text-center ">
         <div className="rounded-full bg-yellow-500 w-fit h-fit p-6 border-[15px] border-yellow-300 shadow-[0px_0px_40px_0px_#faf089]">
           <FaIndianRupeeSign size={80} />
         </div>
         <p className="text-4xl mt-5 font-bold">Earn More Coins</p>
 
         {/* Daily Task */}
-        <div className="w-full">
+        <div className="w-full px-3">
           <div className="text-left flex items-center mt-4 w-full relative">
             <p className="font-semibold">Daily Tasks</p>
           </div>
@@ -107,7 +126,7 @@ const Task = () => {
             </div>
           </div>
         </div>
-        {/* Daily reward Card open */}
+        {/*Platform follow Task */}
         {checkInCard && (
           <div className="fixed w-full z-20 h-screen -top-4">
             <DailyCheckIn
@@ -118,47 +137,17 @@ const Task = () => {
           </div>
         )}
         {/* Task List */}
-        <div className="w-full">
-          <div className="text-left flex items-center mt-4 w-full relative">
-            <p className="font-semibold">Task List</p>
-          </div>
-          <div className="mt-2 w-full">
-            <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-              <FaYoutube size={33} className="ml-2 text-red-500" />
-              <div className="w-full">
-                <p className="font-semibold text-sm">Follow On Instagram</p>
-                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
-                  <RuppesCoin bordersize={2} iconsize={8} />
-                  <span className=" font-semibold text-white">+500</span>
-                </div>
-              </div>
-              <div className="flex justify-end mr-1">
-                <MdOutlineNavigateNext
-                  size={34}
-                  className="text-white p-0.5 cursor-pointer"
-                />
-              </div>
-            </div>
-            <div className="w-full my-2 rounded-2xl bg-gray-800 flex items-center gap-x-2 px-1 py-3 text-left">
-              <LuInstagram size={33} className="ml-2 text-pink-500" />
-              <div className="w-full">
-                <p className="font-semibold text-sm">Follow On Instagram</p>
-                <div className="flex w-full gap-x-1 items-center text-[13px] text-gray-400">
-                  <RuppesCoin bordersize={2} iconsize={8} />
-                  <span className=" font-semibold text-white">+500</span>
-                </div>
-              </div>
-              <div className="flex justify-end mr-1">
-                <MdOutlineNavigateNext
-                  size={34}
-                  className="text-white p-0.5 cursor-pointer"
-                />
-              </div>
-            </div>
-          </div>
+        <div className="w-full ">
+          <PlatFormTask
+            followOn={followOn}
+            platFormcard={platFormcard}
+            Cliam={handleCompleteFolloOn}
+            setPlatFormcard={setPlatFormcard}
+            close={() => setPlatFormcard(false)}
+          />
         </div>
         {/* Youtube Video */}
-        <div className="w-full mb-20">
+        <div className="w-full mb-20 px-3">
           <div className="text-left flex items-center mt-4 w-full relative">
             <p className="font-semibold">Youtube Video</p>
           </div>
@@ -166,7 +155,6 @@ const Task = () => {
             <YoutubeTask Youtube={Youtube} handleCliam={handleCliam} />
           </div>
         </div>
-        {/* signle youtube card */}
       </div>
     </div>
   );
