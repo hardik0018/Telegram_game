@@ -3,7 +3,7 @@ import {
   IoCopyOutline,
   IoGiftSharp,
 } from "react-icons/io5";
-import { LuDog, LuRefreshCw } from "react-icons/lu";
+import {  LuRefreshCw } from "react-icons/lu";
 import RuppesCoin from "../components/RuppesCoin";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { useEffect, useState } from "react";
