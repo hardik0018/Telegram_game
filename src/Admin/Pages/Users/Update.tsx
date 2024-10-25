@@ -16,7 +16,19 @@ const Update = () => {
       let res: any = await axios.get(
         `${import.meta.env.VITE_SERVER_HOST}/User/getUser/${slug}`
       );
-    
+
+      return res.data.data;
+    },
+    refetchOnWindowFocus: false,
+  });
+
+  const { data: Redeem, refetch: RedeemFetchAgain } = useQuery({
+    queryKey: [`User-Redeem-${slug}`],
+    queryFn: async () => {
+      let res: any = await axios.get(
+        `${import.meta.env.VITE_SERVER_HOST}/User/reward/${slug}`
+      );
+      console.log(res);
       return res.data.data;
     },
     refetchOnWindowFocus: false,
@@ -101,13 +113,15 @@ const Update = () => {
               <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Redeem</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {data.redeem.length ? (
-                    data.Redeem.map((key: any) => {
+                  {!!Redeem.length ? (
+                    Redeem.map((key: any) => {
                       return (
                         <Link
                           to={`/Admin/User/update/${key.orderId}`}
                           key={key.orderId}
-                          className="w-full md:w-fit bg-gray-300 rounded-md px-4 py-2 flex gap-x-2 my-1 cursor-pointer"
+                          className={`w-full md:w-fit ${
+                            key.status ? "bg-green-300" : "bg-red-300"
+                          } rounded-md px-4 py-2 flex gap-x-2 my-1 cursor-pointer`}
                         >
                           <p className="flex">
                             Order Id:
@@ -115,7 +129,7 @@ const Update = () => {
                           </p>
                           <p className="flex">
                             Amount:
-                            <span className="font-semibold">{key.amount}</span>
+                            <span className="font-semibold">{key.rupees}</span>
                           </p>
                         </Link>
                       );
