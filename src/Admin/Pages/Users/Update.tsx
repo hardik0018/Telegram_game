@@ -22,7 +22,7 @@ const Update = () => {
     refetchOnWindowFocus: false,
   });
 
-  const { data: Redeem, refetch: RedeemFetchAgain } = useQuery({
+  const { data: Redeem } = useQuery({
     queryKey: [`User-Redeem-${slug}`],
     queryFn: async () => {
       let res: any = await axios.get(
