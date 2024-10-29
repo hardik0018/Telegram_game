@@ -3,6 +3,7 @@ import { useContext } from "../context/useContext";
 
 const Coinstatus = () => {
   const { coin } = useContext();
+
   return (
     <div className="flex items-center text-center">
       <div

@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 const RedeemHistory = () => {
   const [currentRedeem, setCurrentRedeem] = useState(false);
 
-
   const { data } = useQuery({
     queryKey: [`1183112225-Rewards`],
     queryFn: async () => {

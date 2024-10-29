@@ -10,6 +10,7 @@ import Loader from "../../../components/Loader";
 const schema = object({
   title: string().required("Title is Required"),
   desc: string().required("Desc is Required"),
+  link: string().required("Link is Required"),
   code: string().required("Code is Required"),
   coin: number().required("Coin is Required"),
 });
@@ -62,6 +63,12 @@ const Add = () => {
                   id="desc"
                   errors={errors.desc}
                 />
+                  <InputBlock
+                    lable="Link"
+                    register={register("link")}
+                    id="link"
+                    errors={errors.link}
+                  />
                   <InputBlock
                     lable="Coin"
                     register={register("coin",{valueAsNumber:true})}

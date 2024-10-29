@@ -1,6 +1,13 @@
 import axios from "axios";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { toast } from "react-toastify";
+import { io, Socket } from "socket.io-client";
 
 interface ContextProps {
   id: Number;
@@ -27,8 +34,13 @@ interface ContextProps {
   setCards: any;
   Youtube: Array<any>;
   setYoutube: any;
+  checkin: Object;
+  setCheckin: any;
   hanldeSave?: any;
   fetchUserData?: any;
+  socket: Socket;
+  followOn: any;
+  setFollowOn: any;
 }
 
 const IntialValues: ContextProps = {
@@ -56,6 +68,17 @@ const IntialValues: ContextProps = {
   setCards: () => undefined,
   Youtube: [],
   setYoutube: () => undefined,
+  checkin: {
+    streak: 0,
+    lastUpdate: undefined,
+  },
+  setCheckin: () => {},
+  socket: io(import.meta.env.VITE_SERVER_HOST),
+  followOn: [
+    { platForm: "Youtube", status: false, coin: 1000, link: "" },
+    { platForm: "Instagram", status: false, coin: 1000, link: "" },
+  ],
+  setFollowOn: () => {},
 };
 
 const LevelSchema: Object = [
@@ -90,7 +113,9 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [MaxEnergy, setMaxEnergy] = useState(IntialValues.MaxEnergy);
   const [Cards, setCards] = useState(IntialValues.Cards);
   const [Youtube, setYoutube] = useState(IntialValues.Youtube);
-
+  const [checkin, setCheckin] = useState(IntialValues.checkin);
+  const [followOn, setFollowOn] = useState(IntialValues.followOn);
+  const socketRef: any = useRef(io({ autoConnect: false }));
   useEffect(() => {
     if (+Energy < +MaxEnergy) {
       const interval = setInterval(function () {
@@ -140,8 +165,18 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   }, [coin]);
 
   useEffect(() => {
-    hanldeSave(id, coin, PPH, level, Cards, Friends, EarnTap, Youtube);
-  }, [coin, PPH, Friends, Cards, level, EarnTap, Youtube]);
+    hanldeSave(
+      id,
+      coin,
+      PPH,
+      level,
+      Cards,
+      Friends,
+      EarnTap,
+      Youtube,
+      followOn
+    );
+  }, [coin, PPH, Friends, Cards, level, EarnTap, Youtube, followOn]);
 
   const hanldeSave = async (
     id: Number,
@@ -151,7 +186,8 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     Cards: any,
     Friends: any,
     tap: Number,
-    Youtube: any
+    Youtube: any,
+    followOn: any
   ) => {
     try {
       await axios.patch(
@@ -164,6 +200,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
           Friends,
           youtube: Youtube,
           tap,
+          followOn,
         }
       );
     } catch (error: any) {
@@ -177,14 +214,32 @@ export const ContextProvider = ({ children }: WithChildProps) => {
       );
 
       if (response.data.success) {
-        const { coin, PPH, friends, level, name, tap, teleID, Cards, youtube } =
-          response.data.data;
+        const {
+          coin,
+          PPH,
+          friends,
+          level,
+          name,
+          tap,
+          teleID,
+          Cards,
+          youtube,
+          checkin,
+          followOn,
+        } = response.data.data;
 
         if (!Cards.length) {
           findCard();
         } else {
           setCards(Cards);
         }
+        if (checkin) {
+          setCheckin(checkin);
+        }
+        if (followOn) {
+          setFollowOn(followOn);
+        }
+
         if (!youtube.length) {
           findYoutubeTask();
         } else {
@@ -240,6 +295,11 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     fetchUserData,
     Youtube,
     setYoutube,
+    checkin,
+    setCheckin,
+    socket: socketRef.current,
+    followOn,
+    setFollowOn,
   };
 
   return <context.Provider value={values}>{children}</context.Provider>;
