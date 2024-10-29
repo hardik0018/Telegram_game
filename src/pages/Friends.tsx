@@ -4,7 +4,7 @@ import {
   IoGiftSharp,
 } from "react-icons/io5";
 import { LuDog, LuRefreshCw } from "react-icons/lu";
-import RuppesCoin from "./RuppesCoin";
+import RuppesCoin from "../components/RuppesCoin";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { useContext } from "../context/useContext";

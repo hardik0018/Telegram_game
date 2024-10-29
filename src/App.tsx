@@ -21,6 +21,7 @@ import AdminYoutubeAdd from "./Admin/Pages/Youtube/Add";
 import AdminYoutubeSee from "./Admin/Pages/Youtube/See";
 import AdminOrdersee from "./Admin/Pages/Order/See";
 import AdminOrderupdate from "./Admin/Pages/Order/Update";
+import Login from "./Admin/Login";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -113,6 +114,10 @@ function App() {
           element: <AdminOrderupdate />,
         },
       ],
+    },
+    {
+      path: "/Admin/login",
+      element: <Login />,
     },
     {
       path: "*",

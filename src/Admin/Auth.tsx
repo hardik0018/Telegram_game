@@ -12,7 +12,7 @@ const Auth = () => {
     </>
   );
   // } else {
-  //   return <Navigate to={"/Admin/Login"} />;
+  //   return <Navigate to={"/Admin/login"} />;
   // }
 };
 
