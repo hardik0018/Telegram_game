@@ -74,7 +74,6 @@ const IntialValues: ContextProps = {
   },
   setCheckin: () => {},
   socket: io(import.meta.env.VITE_SERVER_HOST),
-  // socket: io("http://localhost:4000"),
   followOn: [
     { platForm: "Youtube", status: false, coin: 1000, link: "" },
     { platForm: "Instagram", status: false, coin: 1000, link: "" },
