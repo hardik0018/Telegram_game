@@ -28,7 +28,6 @@ const Update = () => {
       let res: any = await axios.get(
         `${import.meta.env.VITE_SERVER_HOST}/User/reward/${slug}`
       );
-      console.log(res);
       return res.data.data;
     },
     refetchOnWindowFocus: false,

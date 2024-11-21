@@ -5,6 +5,8 @@ import Coinstatus from "../components/Coinstatus";
 import { useContext } from "../context/useContext";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { useCallback, useEffect, useState } from "react";
+import { io } from "socket.io-client";
+const socket = io("http://localhost:4000");
 
 interface FloatingText {
   id: number;
@@ -16,7 +18,7 @@ const Home = () => {
   const {
     fetchUserData,
     name,
-    socket,
+
     Energy,
     PPH,
     EarnTap,
@@ -26,6 +28,7 @@ const Home = () => {
     setCoin,
     setEnergy,
   } = useContext();
+
   const [ProcessBar, setProcessBar] = useState(0);
 
   useEffect(() => {

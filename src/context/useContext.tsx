@@ -7,7 +7,6 @@ import React, {
   useState,
 } from "react";
 import { toast } from "react-toastify";
-import { io, Socket } from "socket.io-client";
 
 interface ContextProps {
   id: Number;
@@ -38,7 +37,6 @@ interface ContextProps {
   setCheckin: any;
   hanldeSave?: any;
   fetchUserData?: any;
-  socket: Socket;
   followOn: any;
   setFollowOn: any;
 }
@@ -73,7 +71,6 @@ const IntialValues: ContextProps = {
     lastUpdate: undefined,
   },
   setCheckin: () => {},
-  socket: io(import.meta.env.VITE_SERVER_HOST),
   followOn: [
     { platForm: "Youtube", status: false, coin: 1000, link: "" },
     { platForm: "Instagram", status: false, coin: 1000, link: "" },
@@ -115,7 +112,7 @@ export const ContextProvider = ({ children }: WithChildProps) => {
   const [Youtube, setYoutube] = useState(IntialValues.Youtube);
   const [checkin, setCheckin] = useState(IntialValues.checkin);
   const [followOn, setFollowOn] = useState(IntialValues.followOn);
-  const socketRef: any = useRef(io({ autoConnect: false }));
+
   useEffect(() => {
     if (+Energy < +MaxEnergy) {
       const interval = setInterval(function () {
@@ -297,7 +294,6 @@ export const ContextProvider = ({ children }: WithChildProps) => {
     setYoutube,
     checkin,
     setCheckin,
-    socket: socketRef.current,
     followOn,
     setFollowOn,
   };
